@@ -21,23 +21,26 @@ import javax.swing.ImageIcon;
 
 public class InterfazPrincipal extends JFrame{
 
-		// Objetos GUI - Menu principal.
 	private JLabel logotipoJL;
+
 	private JButton salirJB;
 	private JButton continuarJB;
+
 	private JRadioButton crearRedJRB;
 	private JRadioButton mostrarRedJRB;
 	private JRadioButton aplicarRedJRB;
 	private JRadioButton entrenarRedJRB;
 	private JRadioButton eliminarRedJRB;
 	private JRadioButton modificarRedJRB;
+
 	private ButtonGroup menuOpcionesBG;
+
 	private JPanel panelAreaImagenJP;
 	private JPanel panelBotonesAccionJP;
 	private JPanel panelBotonesSeleccionJP;
 
 	public InterfazPrincipal(){
-		super("RNA - Perceptron Multicapa");
+		super("Red Neuronal Artificial  <Perceptron Multicapa>");
 		setLayout(new FlowLayout());
 
 		Icon icono = new ImageIcon(getClass().getResource("iconopm2.jpg"));
