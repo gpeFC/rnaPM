@@ -50,7 +50,6 @@ public class VentanaCrearRed extends JFrame{
 	private JPanel panelBotonesTasaJP;
 	private JPanel panelBotonesAccionJP;
 	private JPanel panelBotonesFuncionJP;
-	//private JPanel panelAreaBotonesDatosJP;
 
 	public VentanaCrearRed(){
 		super("Crear Red");
@@ -111,12 +110,6 @@ public class VentanaCrearRed extends JFrame{
 		panelBotonesFuncionJP.setPreferredSize(new Dimension(250,100));
 		panelBotonesFuncionJP.setLayout(new GridLayout(5,1));
 
-		/*
-		panelAreaBotonesDatosJP = new JPanel();
-		panelAreaBotonesDatosJP.setPreferredSize(new Dimension(150,450));
-		panelAreaBotonesDatosJP.setLayout(new FlowLayout());
-		*/
-
 		panelNombreRedJP.add(nombreRedJL);
 		panelNombreRedJP.add(nombreRedJTF);
 
@@ -139,12 +132,6 @@ public class VentanaCrearRed extends JFrame{
 		panelBotonesFuncionJP.add(fdaCapaJRB);
 		panelBotonesFuncionJP.add(fdaNeuronaJRB);
 		panelBotonesFuncionJP.add(fdaOcultasSalidaJRB);
-
-		/*
-		panelAreaBotonesDatosJP.add(panelDatosTextoJP);
-		panelAreaBotonesDatosJP.add(panelBotonesTasaJP);
-		panelAreaBotonesDatosJP.add(panelBotonesFuncionJP);
-		*/
 
 		add(panelDatosTextoJP);
 		add(panelBotonesTasaJP);

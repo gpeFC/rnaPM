@@ -22,7 +22,13 @@ import javax.swing.ImageIcon;
 
 public class VentanaFuncionActivacion extends JFrame{
 
+	private JLabel configuracionJL;
+
 	public VentanaFuncionActivacion(){
 		super("Funcion de Activacion");
+
+		configuracionJL = new JLabel("Establecer configuracion");
+
+		add(configuracionJL);
 	}
 }
