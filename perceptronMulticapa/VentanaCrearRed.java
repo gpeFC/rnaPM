@@ -17,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 public class VentanaCrearRed extends JFrame{
 

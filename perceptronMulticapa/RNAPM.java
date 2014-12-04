@@ -13,14 +13,14 @@ public class RNAPM{
 
 		InterfazPrincipal ventanaPrincipal = new InterfazPrincipal();
 		ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventanaPrincipal.setSize(535,380);
+		ventanaPrincipal.setSize(535,375);
 		ventanaPrincipal.setLocationRelativeTo(null);
 		ventanaPrincipal.setResizable(false);
 		ventanaPrincipal.setVisible(true);
 
 		VentanaCrearRed nuevaRed = new VentanaCrearRed();
 		nuevaRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		nuevaRed.setSize(270,335);
+		nuevaRed.setSize(270,330);
 		nuevaRed.setLocationRelativeTo(null);
 		nuevaRed.setResizable(false);
 		nuevaRed.setVisible(true);
