@@ -45,7 +45,7 @@ public class RNAPM{
 		mostrarRed.setSize(350,370);
 		mostrarRed.setLocationRelativeTo(null);
 		mostrarRed.setResizable(false);
-		mostrarRed.setVisible(true); */
+		mostrarRed.setVisible(true);
 
 		VentanaAplicarRed aplicarRed = new VentanaAplicarRed();
 		aplicarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,5 +61,13 @@ public class RNAPM{
 		entrenarRed.setLocationRelativeTo(null);
 		entrenarRed.setResizable(false);
 		entrenarRed.setVisible(true);
+		*/
+
+		VentanaEliminarRed eliminarRed = new VentanaEliminarRed();
+		eliminarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		eliminarRed.setSize(375,105);
+		eliminarRed.setLocationRelativeTo(null);
+		eliminarRed.setResizable(false);
+		eliminarRed.setVisible(true);
 	}
 }
