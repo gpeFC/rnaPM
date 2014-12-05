@@ -53,7 +53,7 @@ public class RNAPM{
 		aplicarRed.setLocationRelativeTo(null);
 		aplicarRed.setResizable(false);
 		aplicarRed.setVisible(true);
-		*/
+		
 		
 
 		VentanaEntrenarRed entrenarRed = new VentanaEntrenarRed();
@@ -77,13 +77,14 @@ public class RNAPM{
 		errorMinimo.setResizable(false);
 		errorMinimo.setVisible(true);
 		
-		/*
+		
 		VentanaEliminarRed eliminarRed = new VentanaEliminarRed();
 		eliminarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		eliminarRed.setSize(375,105);
 		eliminarRed.setLocationRelativeTo(null);
 		eliminarRed.setResizable(false);
 		eliminarRed.setVisible(true);
+		*/
 		
 
 		VentanaModificarRed modificarRed = new VentanaModificarRed();
@@ -106,6 +107,12 @@ public class RNAPM{
 		tasaRed.setLocationRelativeTo(null);
 		tasaRed.setResizable(false);
 		tasaRed.setVisible(true);
-		*/
+
+		VentanaConfiguracionFdA funcionRed = new VentanaConfiguracionFdA();
+		funcionRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		funcionRed.setSize(260,190);
+		funcionRed.setLocationRelativeTo(null);
+		funcionRed.setResizable(false);
+		funcionRed.setVisible(true);
 	}
 }
