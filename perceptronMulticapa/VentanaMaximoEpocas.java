@@ -23,8 +23,10 @@ public class VentanaMaximoEpocas extends JFrame{
 
 	private JTextField maxEpocasJTF;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelDatosJP;
-	private JPanel panelVacioJP;
 
 	public VentanaMaximoEpocas(){
 		super("Maximo de Epocas");
@@ -40,14 +42,22 @@ public class VentanaMaximoEpocas extends JFrame{
 		panelDatosJP.setPreferredSize(new Dimension(350,25));
 		panelDatosJP.setLayout(new GridLayout(1,2));
 
-		panelVacioJP = new JPanel();
-		panelVacioJP.setPreferredSize(new Dimension(350,5));
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(350,5));
 
 		panelDatosJP.add(maxEpocasJL);
 		panelDatosJP.add(maxEpocasJTF);
 
+		add(panelVacioJP0);
 		add(panelDatosJP);
-		add(panelVacioJP);
+		add(panelVacioJP1);
 		add(aceptarJB);
+		add(panelVacioJP2);
 	}
 }

@@ -24,8 +24,10 @@ public class VentanaNombreRed extends JFrame{
 
 	private JTextField nombreRedJTF;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelDatosJP;
-	private JPanel panelVacioJP;
 	private JPanel panelBotonesAccionJP;
 
 	public VentanaNombreRed(){
@@ -39,12 +41,18 @@ public class VentanaNombreRed extends JFrame{
 
 		nombreRedJTF = new JTextField(15);
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(350,5));
+
 		panelDatosJP = new JPanel();
 		panelDatosJP.setPreferredSize(new Dimension(350,25));
 		panelDatosJP.setLayout(new GridLayout(1,2));
-
-		panelVacioJP = new JPanel();
-		panelVacioJP.setPreferredSize(new Dimension(350,5));
 
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(350,25));
@@ -56,8 +64,10 @@ public class VentanaNombreRed extends JFrame{
 		panelBotonesAccionJP.add(aceptarJB);
 		panelBotonesAccionJP.add(cancelarJB);
 
+		add(panelVacioJP0);
 		add(panelDatosJP);
-		add(panelVacioJP);
+		add(panelVacioJP1);
 		add(panelBotonesAccionJP);
+		add(panelVacioJP2);
 	}
 }

@@ -16,14 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 public class VentanaCrearRed extends JFrame{
 
 	private JLabel nombreRedJL;
 	private JLabel numeroCapasJL;
-	private JLabel tasaApndzjeJL;
-	private JLabel funcionActvcnJL;
 
 	private JButton crearJB;
 	private JButton salirJB;
@@ -42,8 +41,10 @@ public class VentanaCrearRed extends JFrame{
 	private JTextField nombreRedJTF;
 	private JTextField numeroCapasJTF;
 
-	private JPanel panelNombreRedJP;
-	private JPanel panelCapasRedJP;
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
+	private JPanel panelVacioJP3;
 	private JPanel panelDatosTextoJP;
 	private JPanel panelBotonesTasaJP;
 	private JPanel panelBotonesAccionJP;
@@ -55,8 +56,6 @@ public class VentanaCrearRed extends JFrame{
 
 		nombreRedJL = new JLabel("  Nombre/Red:");
 		numeroCapasJL = new JLabel("  Numero/Capas:");
-		tasaApndzjeJL = new JLabel("  Tasa de Aprendizaje");
-		funcionActvcnJL = new JLabel("  Funcion de Activacion");
 
 		crearJB = new JButton("Crear");
 		salirJB = new JButton("Salir");
@@ -84,56 +83,60 @@ public class VentanaCrearRed extends JFrame{
 		nombreRedJTF = new JTextField();
 		numeroCapasJTF = new JTextField();
 
-		panelNombreRedJP = new JPanel();
-		panelNombreRedJP.setPreferredSize(new Dimension(250,25));
-		panelNombreRedJP.setLayout(new GridLayout(1,2));
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(250,5));
 
-		panelCapasRedJP = new JPanel();
-		panelCapasRedJP.setPreferredSize(new Dimension(250,25));
-		panelCapasRedJP.setLayout(new GridLayout(1,2));
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP3 = new JPanel();
+		panelVacioJP3.setPreferredSize(new Dimension(250,5));
 
 		panelDatosTextoJP = new JPanel();
 		panelDatosTextoJP.setPreferredSize(new Dimension(250,50));
-		panelDatosTextoJP.setLayout(new BorderLayout());
+		panelDatosTextoJP.setLayout(new GridLayout(2,2,5,2));
 
 		panelBotonesTasaJP = new JPanel();
-		panelBotonesTasaJP.setPreferredSize(new Dimension(250,100));
-		panelBotonesTasaJP.setLayout(new GridLayout(4,1));
+		panelBotonesTasaJP.setPreferredSize(new Dimension(250,80));
+		panelBotonesTasaJP.setLayout(new GridLayout(3,1));
 
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(250,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,70,1));
 
 		panelBotonesFuncionJP = new JPanel();
-		panelBotonesFuncionJP.setPreferredSize(new Dimension(250,100));
-		panelBotonesFuncionJP.setLayout(new GridLayout(5,1));
+		panelBotonesFuncionJP.setPreferredSize(new Dimension(250,90));
+		panelBotonesFuncionJP.setLayout(new GridLayout(4,1));
 
-		panelNombreRedJP.add(nombreRedJL);
-		panelNombreRedJP.add(nombreRedJTF);
+		panelDatosTextoJP.add(nombreRedJL);
+		panelDatosTextoJP.add(nombreRedJTF);
+		panelDatosTextoJP.add(numeroCapasJL);
+		panelDatosTextoJP.add(numeroCapasJTF);
 
-		panelCapasRedJP.add(numeroCapasJL);
-		panelCapasRedJP.add(numeroCapasJTF);
-
-		panelDatosTextoJP.add(panelNombreRedJP, BorderLayout.NORTH);
-		panelDatosTextoJP.add(panelCapasRedJP, BorderLayout.SOUTH);
-
-		panelBotonesTasaJP.add(tasaApndzjeJL);
 		panelBotonesTasaJP.add(tdaRedJRB);
 		panelBotonesTasaJP.add(tdaCapaJRB);
 		panelBotonesTasaJP.add(tdaNeuronaJRB);
+		panelBotonesTasaJP.setBorder(BorderFactory.createTitledBorder("Tasa de Aprendizaje"));
 
 		panelBotonesAccionJP.add(crearJB);
 		panelBotonesAccionJP.add(salirJB);
 
-		panelBotonesFuncionJP.add(funcionActvcnJL);
 		panelBotonesFuncionJP.add(fdaRedJRB);
 		panelBotonesFuncionJP.add(fdaCapaJRB);
 		panelBotonesFuncionJP.add(fdaNeuronaJRB);
 		panelBotonesFuncionJP.add(fdaOcultasSalidaJRB);
+		panelBotonesFuncionJP.setBorder(BorderFactory.createTitledBorder("Funcion de Activacion"));
 
+		add(panelVacioJP0);
 		add(panelDatosTextoJP);
+		add(panelVacioJP1);
 		add(panelBotonesTasaJP);
+		add(panelVacioJP2);
 		add(panelBotonesFuncionJP);
+		add(panelVacioJP3);
 		add(panelBotonesAccionJP);
 	}
 }

@@ -20,8 +20,6 @@ import javax.swing.BorderFactory;
 
 public class VentanaConfiguracionFdA extends JFrame{
 
-	private JLabel funcionActivacionJL;
-
 	private JButton aceptarJB;
 	private JButton cancelarJB;
 
@@ -32,14 +30,15 @@ public class VentanaConfiguracionFdA extends JFrame{
 
 	private ButtonGroup opcionesFuncionBG;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelBotonesAccionJP;
 	private JPanel panelBotonesSeleccionJP;
 
 	public VentanaConfiguracionFdA(){
 		super("Configuracion FdA");
 		setLayout(new FlowLayout());
-
-		funcionActivacionJL = new JLabel("Funcion de activacion");
 
 		aceptarJB = new JButton("Aceptar");
 		cancelarJB = new JButton("Cancelar");
@@ -55,24 +54,36 @@ public class VentanaConfiguracionFdA extends JFrame{
 		opcionesFuncionBG.add(funcionNeuronaJRB);
 		opcionesFuncionBG.add(funcionOcultasSalidaJRB);
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(230,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(230,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(230,5));
+
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(230,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,30,10));
 
 		panelBotonesSeleccionJP = new JPanel();
-		panelBotonesSeleccionJP.setLayout(new GridLayout(5,1));
+		panelBotonesSeleccionJP.setLayout(new GridLayout(4,1));
 		panelBotonesSeleccionJP.setPreferredSize(new Dimension(220,120));
 
 		panelBotonesAccionJP.add(aceptarJB);
 		panelBotonesAccionJP.add(cancelarJB);
 
-		panelBotonesSeleccionJP.add(funcionActivacionJL);
 		panelBotonesSeleccionJP.add(funcionRedJRB);
 		panelBotonesSeleccionJP.add(funcionCapaJRB);
 		panelBotonesSeleccionJP.add(funcionNeuronaJRB);
 		panelBotonesSeleccionJP.add(funcionOcultasSalidaJRB);
+		panelBotonesSeleccionJP.setBorder(BorderFactory.createTitledBorder("Funcion de Activacion"));
 
+		add(panelVacioJP0);
 		add(panelBotonesSeleccionJP);
+		add(panelVacioJP1);
 		add(panelBotonesAccionJP);
+		add(panelVacioJP2);
 	}
 }

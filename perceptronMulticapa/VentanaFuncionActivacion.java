@@ -20,6 +20,9 @@ public class VentanaFuncionActivacion extends JFrame{
 
 	private JButton aceptarJB;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelConfigFncnActvcnJP;
 
 	public VentanaFuncionActivacion(){
@@ -30,11 +33,23 @@ public class VentanaFuncionActivacion extends JFrame{
 
 		aceptarJB = new JButton("Aceptar");
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(250,5));
+
 		panelConfigFncnActvcnJP = new JPanel();
 		panelConfigFncnActvcnJP.setPreferredSize(new Dimension(250,160));
 
+		add(panelVacioJP0);
 		add(configuracionJL);
 		add(new JScrollPane(panelConfigFncnActvcnJP));
+		add(panelVacioJP1);
 		add(aceptarJB);
+		add(panelVacioJP2);
 	}
 }

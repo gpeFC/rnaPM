@@ -25,8 +25,10 @@ public class VentanaMaximoEpocasErrorMinimo extends JFrame{
 	private JTextField maxEpocasJTF;
 	private JTextField errorMinimoJTF;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelDatosJP;
-	private JPanel panelVacioJP;
 
 	public VentanaMaximoEpocasErrorMinimo(){
 		super("MaximoEpocas / ErrorMinimo");
@@ -40,20 +42,28 @@ public class VentanaMaximoEpocasErrorMinimo extends JFrame{
 		maxEpocasJTF = new JTextField(15);
 		errorMinimoJTF = new JTextField(15);
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(350,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(350,5));
+
 		panelDatosJP = new JPanel();
 		panelDatosJP.setPreferredSize(new Dimension(350,50));
-		panelDatosJP.setLayout(new GridLayout(2,2));
-
-		panelVacioJP = new JPanel();
-		panelVacioJP.setPreferredSize(new Dimension(350,5));
+		panelDatosJP.setLayout(new GridLayout(2,2,5,2));
 
 		panelDatosJP.add(maxEpocasJL);
 		panelDatosJP.add(maxEpocasJTF);
 		panelDatosJP.add(errorMinimoJL);
 		panelDatosJP.add(errorMinimoJTF);
 
+		add(panelVacioJP0);
 		add(panelDatosJP);
-		add(panelVacioJP);
+		add(panelVacioJP1);
 		add(aceptarJB);
+		add(panelVacioJP2);
 	}
 }

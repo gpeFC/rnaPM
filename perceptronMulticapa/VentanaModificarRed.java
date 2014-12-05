@@ -21,7 +21,6 @@ import javax.swing.BorderFactory;
 public class VentanaModificarRed extends JFrame{
 
 	private JLabel redModificarJL;
-	private JLabel modificarParametroJL;
 
 	private JButton modificarJB;
 	private JButton salirJB;
@@ -34,6 +33,11 @@ public class VentanaModificarRed extends JFrame{
 
 	private JComboBox redesJCB;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
+	private JPanel panelVacioJP3;
+	private JPanel panelRedesJP;
 	private JPanel panelBotonesAccionJP;
 	private JPanel panelBotonesSeleccionJP;
 
@@ -41,8 +45,7 @@ public class VentanaModificarRed extends JFrame{
 		super("Modificar Red");
 		setLayout(new FlowLayout());
 
-		redModificarJL = new JLabel("Red a modificar: ");
-		modificarParametroJL = new JLabel("Parametro a modificar");
+		redModificarJL = new JLabel(" Red a modificar: ");
 
 		modificarJB = new JButton("Modificar");
 		salirJB = new JButton("Salir");
@@ -60,25 +63,47 @@ public class VentanaModificarRed extends JFrame{
 		redesJCB.setPreferredSize(new Dimension(150,20));
 		redesJCB.setMaximumRowCount(3);
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(300,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(300,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(300,5));
+
+		panelVacioJP3 = new JPanel();
+		panelVacioJP3.setPreferredSize(new Dimension(300,5));
+
+		panelRedesJP = new JPanel();
+		panelRedesJP.setPreferredSize(new Dimension(300,20));
+		panelRedesJP.setLayout(new GridLayout(1,2));
+
 		panelBotonesAccionJP = new JPanel();
-		panelBotonesAccionJP.setPreferredSize(new Dimension(280,25));
-		panelBotonesAccionJP.setLayout(new GridLayout(1,2,70,20));
+		panelBotonesAccionJP.setPreferredSize(new Dimension(300,25));
+		panelBotonesAccionJP.setLayout(new GridLayout(1,2,50,20));
 
 		panelBotonesSeleccionJP = new JPanel();
-		panelBotonesSeleccionJP.setLayout(new GridLayout(4,1));
-		panelBotonesSeleccionJP.setPreferredSize(new Dimension(270,100));
+		panelBotonesSeleccionJP.setLayout(new GridLayout(3,1));
+		panelBotonesSeleccionJP.setPreferredSize(new Dimension(300,100));
+
+		panelRedesJP.add(redModificarJL);
+		panelRedesJP.add(redesJCB);
 
 		panelBotonesAccionJP.add(modificarJB);
 		panelBotonesAccionJP.add(salirJB);
 
-		panelBotonesSeleccionJP.add(modificarParametroJL);
 		panelBotonesSeleccionJP.add(nombreRedJRB);
 		panelBotonesSeleccionJP.add(configuracionTdAJRB);
 		panelBotonesSeleccionJP.add(configuracionFdAJRB);
+		panelBotonesSeleccionJP.setBorder(BorderFactory.createTitledBorder("Parametro a modificar"));
 
-		add(redModificarJL);
-		add(redesJCB);
+		add(panelVacioJP0);
+		add(panelRedesJP);
+		add(panelVacioJP1);
 		add(panelBotonesSeleccionJP);
+		add(panelVacioJP2);
 		add(panelBotonesAccionJP);
+		add(panelVacioJP3);
 	}
 }

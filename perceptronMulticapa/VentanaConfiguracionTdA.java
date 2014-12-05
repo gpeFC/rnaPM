@@ -20,8 +20,6 @@ import javax.swing.BorderFactory;
 
 public class VentanaConfiguracionTdA extends JFrame{
 
-	private JLabel tasaAprendizajeJL;
-
 	private JButton aceptarJB;
 	private JButton cancelarJB;
 
@@ -31,14 +29,15 @@ public class VentanaConfiguracionTdA extends JFrame{
 
 	private ButtonGroup opcionesTasaBG;
 
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
 	private JPanel panelBotonesAccionJP;
 	private JPanel panelBotonesSeleccionJP;
 
 	public VentanaConfiguracionTdA(){
 		super("Configuracion TdA");
 		setLayout(new FlowLayout());
-
-		tasaAprendizajeJL = new JLabel("Tasa de aprendizaje");
 
 		aceptarJB = new JButton("Aceptar");
 		cancelarJB = new JButton("Cancelar");
@@ -52,23 +51,35 @@ public class VentanaConfiguracionTdA extends JFrame{
 		opcionesTasaBG.add(tasaCapaJRB);
 		opcionesTasaBG.add(tasaNeuronaJRB);
 
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(230,5));
+
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(230,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(230,5));
+
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(230,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,30,20));
 
 		panelBotonesSeleccionJP = new JPanel();
-		panelBotonesSeleccionJP.setLayout(new GridLayout(4,1));
+		panelBotonesSeleccionJP.setLayout(new GridLayout(3,1));
 		panelBotonesSeleccionJP.setPreferredSize(new Dimension(220,100));
 
 		panelBotonesAccionJP.add(aceptarJB);
 		panelBotonesAccionJP.add(cancelarJB);
 
-		panelBotonesSeleccionJP.add(tasaAprendizajeJL);
 		panelBotonesSeleccionJP.add(tasaRedJRB);
 		panelBotonesSeleccionJP.add(tasaCapaJRB);
 		panelBotonesSeleccionJP.add(tasaNeuronaJRB);
+		panelBotonesSeleccionJP.setBorder(BorderFactory.createTitledBorder("Tasa de Aprendizaje"));
 
+		add(panelVacioJP0);
 		add(panelBotonesSeleccionJP);
+		add(panelVacioJP1);
 		add(panelBotonesAccionJP);
+		add(panelVacioJP2);
 	}
 }
