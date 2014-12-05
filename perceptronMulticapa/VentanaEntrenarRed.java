@@ -32,7 +32,7 @@ public class VentanaEntrenarRed extends JFrame{
 	private JPanel panelBotonesAccionJP;
 
 	public VentanaEntrenarRed(){
-		super("Aplicar Red");
+		super("Entrenar Red");
 		setLayout(new FlowLayout());
 
 		redEntrenarJL = new JLabel("Red a entrenar: ");
