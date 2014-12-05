@@ -31,5 +31,12 @@ public class RNAPM{
 		funcionActivacion.setLocationRelativeTo(null);
 		funcionActivacion.setResizable(false);
 		funcionActivacion.setVisible(true);
+
+		VentanaMostrarRed mostrarRed = new VentanaMostrarRed();
+		mostrarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mostrarRed.setSize(350,400);
+		mostrarRed.setLocationRelativeTo(null);
+		mostrarRed.setResizable(false);
+		mostrarRed.setVisible(true);
 	}
 }
