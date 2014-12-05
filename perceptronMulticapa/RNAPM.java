@@ -7,10 +7,17 @@
  ******************************************************************************/
 
 import javax.swing.JFrame;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class RNAPM{
+
+	RedNeuronal rnapm=null;
+	ArrayList<RedNeuronal> redesNeuronalesPM = new ArrayList<RedNeuronal>();
+
 	public static void main(String args[]){
 
+		/*
 		InterfazPrincipal ventanaPrincipal = new InterfazPrincipal();
 		ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaPrincipal.setSize(535,375);
@@ -31,12 +38,21 @@ public class RNAPM{
 		funcionActivacion.setLocationRelativeTo(null);
 		funcionActivacion.setResizable(false);
 		funcionActivacion.setVisible(true);
+		
 
 		VentanaMostrarRed mostrarRed = new VentanaMostrarRed();
 		mostrarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mostrarRed.setSize(350,400);
+		mostrarRed.setSize(350,370);
 		mostrarRed.setLocationRelativeTo(null);
 		mostrarRed.setResizable(false);
 		mostrarRed.setVisible(true);
+		*/
+
+		VentanaAplicarRed aplicarRed = new VentanaAplicarRed();
+		aplicarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		aplicarRed.setSize(375,395);
+		aplicarRed.setLocationRelativeTo(null);
+		aplicarRed.setResizable(false);
+		aplicarRed.setVisible(true);
 	}
 }

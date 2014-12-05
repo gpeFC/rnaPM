@@ -13,12 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 
 public class VentanaMostrarRed extends JFrame{
 
 	private JLabel datosRedJL;
+	private JLabel redMostrarJL;
 
-	private JButton aceptarJB;
+	private JButton salirJB;
+
+	private JComboBox redesJCB;
 
 	private JPanel panelDatosRedJP;
 
@@ -27,14 +31,21 @@ public class VentanaMostrarRed extends JFrame{
 		setLayout(new FlowLayout());
 
 		datosRedJL = new JLabel("Datos de la Red");
+		redMostrarJL = new JLabel("Red a mostar: ");
 
-		aceptarJB = new JButton("Aceptar");
+		salirJB = new JButton("Salir");
+
+		redesJCB = new JComboBox();
+		redesJCB.setPreferredSize(new Dimension(150,20));
+		redesJCB.setMaximumRowCount(3);
 
 		panelDatosRedJP = new JPanel();
 		panelDatosRedJP.setPreferredSize(new Dimension(300,250));
 
+		add(redMostrarJL);
+		add(redesJCB);
 		add(datosRedJL);
 		add(new JScrollPane(panelDatosRedJP));
-		add(aceptarJB);
+		add(salirJB);
 	}
 }
