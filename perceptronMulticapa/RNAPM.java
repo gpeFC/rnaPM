@@ -62,6 +62,20 @@ public class RNAPM{
 		entrenarRed.setLocationRelativeTo(null);
 		entrenarRed.setResizable(false);
 		entrenarRed.setVisible(true);
+
+		VentanaMaximoEpocas maxEpocas = new VentanaMaximoEpocas();
+		maxEpocas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		maxEpocas.setSize(375,110);
+		maxEpocas.setLocationRelativeTo(null);
+		maxEpocas.setResizable(false);
+		maxEpocas.setVisible(true);
+
+		VentanaMaximoEpocasErrorMinimo errorMinimo = new VentanaMaximoEpocasErrorMinimo();
+		errorMinimo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		errorMinimo.setSize(375,135);
+		errorMinimo.setLocationRelativeTo(null);
+		errorMinimo.setResizable(false);
+		errorMinimo.setVisible(true);
 		
 		/*
 		VentanaEliminarRed eliminarRed = new VentanaEliminarRed();
