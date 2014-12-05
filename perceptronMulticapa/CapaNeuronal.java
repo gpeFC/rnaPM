@@ -6,6 +6,8 @@
  * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
  ******************************************************************************/
 
+import java.util.Random;
+
 public class CapaNeuronal{
 	private int[] funciones;		// Indicador de funcion de activacion por neurona.
 	private double[] delthas;		// Delthas calculados de cada neurona.
@@ -51,7 +53,8 @@ public class CapaNeuronal{
 		double alpha=0.0;
 		for(int i=0; i<this.neuronas.length; i++){
 			do{
-				alpha = (Math.random()*10 + 1)/10.0;
+				Random pseudoAleatorio = new Random();
+				alpha = pseudoAleatorio.nextDouble();
 			}while(alpha == 0.0);
 			this.neuronas[i].establecerAlpha(alpha);
 		}
@@ -87,11 +90,6 @@ public class CapaNeuronal{
 	public void actualizarAlphas(){
 	}
 
-	/** Método para actualizar el valor del umbral\bias de cada una de las neuronas de la capa.(Simple) */
-	public void actualizarBiases(int indice, double error){
-		this.neuronas[indice].establecerUmbral(this.neuronas[indice].obtenerBias() + (this.neuronas[indice].obtenerAlpha()*error));
-	}
-
 	/** Método para actualizar el valor del umbral\bias de cada una de las neuronas de la capa.(Multicapa) */
 	public void actualizarBiases(){
 		double biasActual, biasNuevo=0.0;
@@ -101,16 +99,6 @@ public class CapaNeuronal{
 			System.out.printf("\nUmb: (%f) = (%f) + [(%f)*(%f)]\n", biasNuevo, biasActual, this.neuronas[i].obtenerAlpha(), this.delthas[i]);
 			this.neuronas[i].establecerUmbral(biasNuevo);
 		}
-	}
-
-	/** Método para actualizar el valor de los pesos sinapticos de cada una de las neuronas de la capa.(Simple) */
-	public void actualizarPesos(int indice, double error){
-		double[] pesosActuales;
-		double[] pesosNuevos = new double[this.entradas.length];
-		pesosActuales = this.neuronas[indice].obtenerPesos();
-		for(int j=0; j<this.entradas.length; j++)
-			pesosNuevos[j] = pesosActuales[j] + (this.neuronas[indice].obtenerAlpha()*error*this.entradas[j]);
-		this.neuronas[indice].establecerPesos(pesosNuevos);
 	}
 
 	/** Método para actualizar el valor de los pesos sinapticos de cada una de las neuronas de la capa.(Multicapa) */

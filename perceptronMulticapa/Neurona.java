@@ -6,6 +6,8 @@
  * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
  ******************************************************************************/
 
+import java.util.Random;
+
 public class Neurona{
 	private double alpha;	// Tasa de aprendizaje.
 	private double bias;	// Bias.
@@ -17,12 +19,14 @@ public class Neurona{
 		this.alpha = 0.0;
 		this.salida = 0.0;
 		do{
-			this.bias = (Math.random()*10 + 1)/10.0;	// Inicialización aleatoria del bias.
+			Random pseudoAleatorio = new Random();
+			this.bias = pseudoAleatorio.nextDouble();	// Inicialización aleatoria del bias.
 		}while(this.bias == 0.0);
 		this.pesos = new double[numArgs];
 		for(int i=0; i<numArgs; i++){
 			do{
-				this.pesos[i] = (Math.random()*10 + 1)/10.0;	// Inicialización aleatoria de los pesos sinapticos.
+				Random pseudoAleatorio = new Random();
+				this.pesos[i] = pseudoAleatorio.nextDouble();	// Inicialización aleatoria de los pesos sinapticos.
 			}while(this.pesos[i]==0.0);
 		}
 	}

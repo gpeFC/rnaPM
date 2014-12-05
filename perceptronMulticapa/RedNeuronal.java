@@ -7,6 +7,7 @@
  ******************************************************************************/
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RedNeuronal{
 	private String nombreRed;
@@ -37,12 +38,13 @@ public class RedNeuronal{
 		this.configuracionAlphas = configuracionAlphas;
 	}
 
-	public void establecerConfiguracionAlphas(int indice){
+	public void establecerConfiguracionAlphas(int indice){ // Generar config: Alphas/Neurona Aqui.:
 		double alpha=0.0;
 		CapaNeuronal capa;
 		if(indice == 1){
 			do{
-				alpha = (Math.random()*10 + 1)/10.0;
+				Random pseudoAleatorio = new Random();
+				alpha = pseudoAleatorio.nextDouble();
 			}while(alpha == 0.0);
 			for(int i=0; i<this.redNeuronal.size(); i++){
 				capa = this.redNeuronal.get(i);
@@ -53,7 +55,8 @@ public class RedNeuronal{
 			for(int i=0; i<this.redNeuronal.size(); i++){
 				capa = this.redNeuronal.get(i);
 				do{
-					alpha = (Math.random()*10 + 1)/10.0;
+					Random pseudoAleatorio = new Random();
+					alpha = pseudoAleatorio.nextDouble();
 				}while(alpha == 0.0);
 				capa.establecerAlphas(alpha);
 			}

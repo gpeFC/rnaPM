@@ -10,20 +10,28 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import java.util.InputMismatchException;
 
 public class VentanaCrearRed extends JFrame{
 
+	private int[] numNeursCapa;
+	private RedNeuronal rnapm;
+
 	private JLabel nombreRedJL;
 	private JLabel numeroCapasJL;
-	private JLabel tasaApndzjeJL;
-	private JLabel funcionActvcnJL;
 
 	private JButton crearJB;
 	private JButton salirJB;
@@ -42,8 +50,10 @@ public class VentanaCrearRed extends JFrame{
 	private JTextField nombreRedJTF;
 	private JTextField numeroCapasJTF;
 
-	private JPanel panelNombreRedJP;
-	private JPanel panelCapasRedJP;
+	private JPanel panelVacioJP0;
+	private JPanel panelVacioJP1;
+	private JPanel panelVacioJP2;
+	private JPanel panelVacioJP3;
 	private JPanel panelDatosTextoJP;
 	private JPanel panelBotonesTasaJP;
 	private JPanel panelBotonesAccionJP;
@@ -53,15 +63,36 @@ public class VentanaCrearRed extends JFrame{
 		super("Crear Red");
 		setLayout(new FlowLayout());
 
+		ManejadorAL manejador1 = new ManejadorAL();
+
+		this.rnapm = new RedNeuronal("","","");
+
 		nombreRedJL = new JLabel("  Nombre/Red:");
 		numeroCapasJL = new JLabel("  Numero/Capas:");
-		tasaApndzjeJL = new JLabel("  Tasa de Aprendizaje");
-		funcionActvcnJL = new JLabel("  Funcion de Activacion");
 
 		crearJB = new JButton("Crear");
+		crearJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"Usted oprimio: %s", evento.getActionCommand()));
+			}
+		});
+
 		salirJB = new JButton("Salir");
+		salirJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				dispose();
+			}
+		});
 
 		tdaRedJRB = new JRadioButton("TdA/Red", false);
+		tdaRedJRB.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent evento){
+				if (evento.getStateChange() == ItemEvent.SELECTED){
+				}
+			}
+		});
+
 		tdaCapaJRB = new JRadioButton("Tda/Capa", false);
 		tdaNeuronaJRB = new JRadioButton("TdA/Neurona", false);
 
@@ -82,58 +113,139 @@ public class VentanaCrearRed extends JFrame{
 		fdaOpcionesBG.add(fdaOcultasSalidaJRB);
 
 		nombreRedJTF = new JTextField();
+		nombreRedJTF.addActionListener(manejador1);
+
 		numeroCapasJTF = new JTextField();
+		numeroCapasJTF.addActionListener(manejador1);
 
-		panelNombreRedJP = new JPanel();
-		panelNombreRedJP.setPreferredSize(new Dimension(250,25));
-		panelNombreRedJP.setLayout(new GridLayout(1,2));
+		panelVacioJP0 = new JPanel();
+		panelVacioJP0.setPreferredSize(new Dimension(250,5));
 
-		panelCapasRedJP = new JPanel();
-		panelCapasRedJP.setPreferredSize(new Dimension(250,25));
-		panelCapasRedJP.setLayout(new GridLayout(1,2));
+		panelVacioJP1 = new JPanel();
+		panelVacioJP1.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP2 = new JPanel();
+		panelVacioJP2.setPreferredSize(new Dimension(250,5));
+
+		panelVacioJP3 = new JPanel();
+		panelVacioJP3.setPreferredSize(new Dimension(250,5));
 
 		panelDatosTextoJP = new JPanel();
 		panelDatosTextoJP.setPreferredSize(new Dimension(250,50));
-		panelDatosTextoJP.setLayout(new BorderLayout());
+		panelDatosTextoJP.setLayout(new GridLayout(2,2,5,2));
 
 		panelBotonesTasaJP = new JPanel();
-		panelBotonesTasaJP.setPreferredSize(new Dimension(250,100));
-		panelBotonesTasaJP.setLayout(new GridLayout(4,1));
+		panelBotonesTasaJP.setPreferredSize(new Dimension(250,80));
+		panelBotonesTasaJP.setLayout(new GridLayout(3,1));
 
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(250,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,70,1));
 
 		panelBotonesFuncionJP = new JPanel();
-		panelBotonesFuncionJP.setPreferredSize(new Dimension(250,100));
-		panelBotonesFuncionJP.setLayout(new GridLayout(5,1));
+		panelBotonesFuncionJP.setPreferredSize(new Dimension(250,90));
+		panelBotonesFuncionJP.setLayout(new GridLayout(4,1));
 
-		panelNombreRedJP.add(nombreRedJL);
-		panelNombreRedJP.add(nombreRedJTF);
+		panelDatosTextoJP.add(nombreRedJL);
+		panelDatosTextoJP.add(nombreRedJTF);
+		panelDatosTextoJP.add(numeroCapasJL);
+		panelDatosTextoJP.add(numeroCapasJTF);
 
-		panelCapasRedJP.add(numeroCapasJL);
-		panelCapasRedJP.add(numeroCapasJTF);
-
-		panelDatosTextoJP.add(panelNombreRedJP, BorderLayout.NORTH);
-		panelDatosTextoJP.add(panelCapasRedJP, BorderLayout.SOUTH);
-
-		panelBotonesTasaJP.add(tasaApndzjeJL);
 		panelBotonesTasaJP.add(tdaRedJRB);
 		panelBotonesTasaJP.add(tdaCapaJRB);
 		panelBotonesTasaJP.add(tdaNeuronaJRB);
+		panelBotonesTasaJP.setBorder(BorderFactory.createTitledBorder("Tasa de Aprendizaje"));
 
 		panelBotonesAccionJP.add(crearJB);
 		panelBotonesAccionJP.add(salirJB);
 
-		panelBotonesFuncionJP.add(funcionActvcnJL);
 		panelBotonesFuncionJP.add(fdaRedJRB);
 		panelBotonesFuncionJP.add(fdaCapaJRB);
 		panelBotonesFuncionJP.add(fdaNeuronaJRB);
 		panelBotonesFuncionJP.add(fdaOcultasSalidaJRB);
+		panelBotonesFuncionJP.setBorder(BorderFactory.createTitledBorder("Funcion de Activacion"));
 
+		add(panelVacioJP0);
 		add(panelDatosTextoJP);
+		add(panelVacioJP1);
 		add(panelBotonesTasaJP);
+		add(panelVacioJP2);
 		add(panelBotonesFuncionJP);
+		add(panelVacioJP3);
 		add(panelBotonesAccionJP);
+	}
+
+	private class ManejadorAL implements ActionListener{
+		public void actionPerformed(ActionEvent evento){
+			if(evento.getSource() == nombreRedJTF){
+				String cadena = String.format("%s", evento.getActionCommand());
+				if(cadena.length() >= 4)
+					rnapm.establecerNombreRed(cadena);
+				else
+					JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"El nombre debe ser de al menos 4 caracteres."));
+			}
+			else if(evento.getSource() == numeroCapasJTF){
+				String cadena = String.format("%s", evento.getActionCommand());
+				try{
+					int numero = Integer.parseInt(cadena);
+					numNeursCapa = new int[numero];
+					for(int i=0;i<numero;i++){
+						int numNeuronas = 0;
+						if(i == numero-1){
+							do{
+								try{
+									while(numNeuronas < 1 || cadena.equals("")){
+										cadena = JOptionPane.showInputDialog("Num/Neuronas-CapaSalida:");
+										try{
+											numNeuronas = Integer.parseInt(cadena);
+											numNeursCapa[i] = numNeuronas;
+										}
+										catch(InputMismatchException excepcion){
+											cadena = "";
+										}
+									}
+									break;
+								}
+								catch(InputMismatchException excepcion){}
+							}while(true);
+						}
+						else{
+							do{
+								try{
+									while(numNeuronas < 1 || cadena.equals("")){
+										cadena = JOptionPane.showInputDialog("Num/Neuronas-CapaOculta["+(i+1)+"]:");
+										try{
+											numNeuronas = Integer.parseInt(cadena);
+											numNeursCapa[i] = numNeuronas;
+										}
+										catch(InputMismatchException excepcion){
+											cadena = "";
+										}
+									}
+									break;
+								}
+								catch(InputMismatchException excepcion){}
+							}while(true);
+						}
+					}
+				}
+				catch(InputMismatchException excepcion){
+					cadena = "";
+					JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"Dato invalido."));
+				}
+			}
+		}
+	}
+
+	private class ManejadorIL implements ItemListener{
+		String cadena;
+		public ManejadorIL(String cad){
+			cadena = cad;
+		}
+		public void itemStateChanged(ItemEvent evento){
+			
+		}
 	}
 }
