@@ -53,21 +53,45 @@ public class RNAPM{
 		aplicarRed.setLocationRelativeTo(null);
 		aplicarRed.setResizable(false);
 		aplicarRed.setVisible(true);
+		*/
 		
 
 		VentanaEntrenarRed entrenarRed = new VentanaEntrenarRed();
 		entrenarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		entrenarRed.setSize(375,245);
+		entrenarRed.setSize(375,400);
 		entrenarRed.setLocationRelativeTo(null);
 		entrenarRed.setResizable(false);
 		entrenarRed.setVisible(true);
-		*/
-
+		
+		/*
 		VentanaEliminarRed eliminarRed = new VentanaEliminarRed();
 		eliminarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		eliminarRed.setSize(375,105);
 		eliminarRed.setLocationRelativeTo(null);
 		eliminarRed.setResizable(false);
 		eliminarRed.setVisible(true);
+		
+
+		VentanaModificarRed modificarRed = new VentanaModificarRed();
+		modificarRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		modificarRed.setSize(300,200);
+		modificarRed.setLocationRelativeTo(null);
+		modificarRed.setResizable(false);
+		modificarRed.setVisible(true);
+
+		VentanaNombreRed nombreRed = new VentanaNombreRed();
+		nombreRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		nombreRed.setSize(375,105);
+		nombreRed.setLocationRelativeTo(null);
+		nombreRed.setResizable(false);
+		nombreRed.setVisible(true);
+
+		VentanaConfiguracionTdA tasaRed = new VentanaConfiguracionTdA();
+		tasaRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tasaRed.setSize(260,170);
+		tasaRed.setLocationRelativeTo(null);
+		tasaRed.setResizable(false);
+		tasaRed.setVisible(true);
+		*/
 	}
 }

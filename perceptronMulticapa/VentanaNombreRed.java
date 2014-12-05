@@ -12,33 +12,31 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
 
-public class VentanaEliminarRed extends JFrame{
+public class VentanaNombreRed extends JFrame{
 
-	private JLabel redEliminarJL;
+	private JLabel nombreRedJL;
 
-	private JButton eliminarJB;
-	private JButton salirJB;
+	private JButton aceptarJB;
+	private JButton cancelarJB;
 
-	private JComboBox redesJCB;
+	private JTextField nombreRedJTF;
 
 	private JPanel panelVacioJP;
 	private JPanel panelBotonesAccionJP;
 
-	public VentanaEliminarRed(){
-		super("Eliminar Red");
+	public VentanaNombreRed(){
+		super("Nombre Red");
 		setLayout(new FlowLayout());
 
-		redEliminarJL = new JLabel("Red a eliminar: ");
+		nombreRedJL = new JLabel("Nuevo nombre: ");
 
-		eliminarJB = new JButton("Eliminar");
-		salirJB = new JButton("Salir");
+		aceptarJB = new JButton("Aceptar");
+		cancelarJB = new JButton("Cancelar");
 
-		redesJCB = new JComboBox();
-		redesJCB.setPreferredSize(new Dimension(150,20));
-		redesJCB.setMaximumRowCount(3);
+		nombreRedJTF = new JTextField(15);
 
 		panelVacioJP = new JPanel();
 		panelVacioJP.setPreferredSize(new Dimension(350,10));
@@ -47,11 +45,11 @@ public class VentanaEliminarRed extends JFrame{
 		panelBotonesAccionJP.setPreferredSize(new Dimension(350,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,70,20));
 
-		panelBotonesAccionJP.add(eliminarJB);
-		panelBotonesAccionJP.add(salirJB);
+		panelBotonesAccionJP.add(aceptarJB);
+		panelBotonesAccionJP.add(cancelarJB);
 
-		add(redEliminarJL);
-		add(redesJCB);
+		add(nombreRedJL);
+		add(nombreRedJTF);
 		add(panelVacioJP);
 		add(panelBotonesAccionJP);
 	}
