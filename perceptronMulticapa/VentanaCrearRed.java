@@ -10,6 +10,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -18,8 +23,12 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import java.util.InputMismatchException;
 
 public class VentanaCrearRed extends JFrame{
+
+	private int[] numNeursCapa;
+	private RedNeuronal rnapm;
 
 	private JLabel nombreRedJL;
 	private JLabel numeroCapasJL;
@@ -54,13 +63,36 @@ public class VentanaCrearRed extends JFrame{
 		super("Crear Red");
 		setLayout(new FlowLayout());
 
+		ManejadorAL manejador1 = new ManejadorAL();
+
+		this.rnapm = new RedNeuronal("","","");
+
 		nombreRedJL = new JLabel("  Nombre/Red:");
 		numeroCapasJL = new JLabel("  Numero/Capas:");
 
 		crearJB = new JButton("Crear");
+		crearJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"Usted oprimio: %s", evento.getActionCommand()));
+			}
+		});
+
 		salirJB = new JButton("Salir");
+		salirJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				dispose();
+			}
+		});
 
 		tdaRedJRB = new JRadioButton("TdA/Red", false);
+		tdaRedJRB.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent evento){
+				if (evento.getStateChange() == ItemEvent.SELECTED){
+				}
+			}
+		});
+
 		tdaCapaJRB = new JRadioButton("Tda/Capa", false);
 		tdaNeuronaJRB = new JRadioButton("TdA/Neurona", false);
 
@@ -81,7 +113,10 @@ public class VentanaCrearRed extends JFrame{
 		fdaOpcionesBG.add(fdaOcultasSalidaJRB);
 
 		nombreRedJTF = new JTextField();
+		nombreRedJTF.addActionListener(manejador1);
+
 		numeroCapasJTF = new JTextField();
+		numeroCapasJTF.addActionListener(manejador1);
 
 		panelVacioJP0 = new JPanel();
 		panelVacioJP0.setPreferredSize(new Dimension(250,5));
@@ -138,5 +173,79 @@ public class VentanaCrearRed extends JFrame{
 		add(panelBotonesFuncionJP);
 		add(panelVacioJP3);
 		add(panelBotonesAccionJP);
+	}
+
+	private class ManejadorAL implements ActionListener{
+		public void actionPerformed(ActionEvent evento){
+			if(evento.getSource() == nombreRedJTF){
+				String cadena = String.format("%s", evento.getActionCommand());
+				if(cadena.length() >= 4)
+					rnapm.establecerNombreRed(cadena);
+				else
+					JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"El nombre debe ser de al menos 4 caracteres."));
+			}
+			else if(evento.getSource() == numeroCapasJTF){
+				String cadena = String.format("%s", evento.getActionCommand());
+				try{
+					int numero = Integer.parseInt(cadena);
+					numNeursCapa = new int[numero];
+					for(int i=0;i<numero;i++){
+						int numNeuronas = 0;
+						if(i == numero-1){
+							do{
+								try{
+									while(numNeuronas < 1 || cadena.equals("")){
+										cadena = JOptionPane.showInputDialog("Num/Neuronas-CapaSalida:");
+										try{
+											numNeuronas = Integer.parseInt(cadena);
+											numNeursCapa[i] = numNeuronas;
+										}
+										catch(InputMismatchException excepcion){
+											cadena = "";
+										}
+									}
+									break;
+								}
+								catch(InputMismatchException excepcion){}
+							}while(true);
+						}
+						else{
+							do{
+								try{
+									while(numNeuronas < 1 || cadena.equals("")){
+										cadena = JOptionPane.showInputDialog("Num/Neuronas-CapaOculta["+(i+1)+"]:");
+										try{
+											numNeuronas = Integer.parseInt(cadena);
+											numNeursCapa[i] = numNeuronas;
+										}
+										catch(InputMismatchException excepcion){
+											cadena = "";
+										}
+									}
+									break;
+								}
+								catch(InputMismatchException excepcion){}
+							}while(true);
+						}
+					}
+				}
+				catch(InputMismatchException excepcion){
+					cadena = "";
+					JOptionPane.showMessageDialog(VentanaCrearRed.this, String.format(
+						"Dato invalido."));
+				}
+			}
+		}
+	}
+
+	private class ManejadorIL implements ItemListener{
+		String cadena;
+		public ManejadorIL(String cad){
+			cadena = cad;
+		}
+		public void itemStateChanged(ItemEvent evento){
+			
+		}
 	}
 }

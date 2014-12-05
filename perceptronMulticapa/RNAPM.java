@@ -12,19 +12,26 @@ import java.util.InputMismatchException;
 
 public class RNAPM{
 
-	RedNeuronal rnapm=null;
-	ArrayList<RedNeuronal> redesNeuronalesPM = new ArrayList<RedNeuronal>();
+	private int numeroCapas=0;
+	private int[] numNeursCapa;
+	private String nombreRed="";
+	private String configTasaRed="";
+	private String configFuncionRed="";
+	private RedNeuronal rnapm=null;
+	private ArrayList<RedNeuronal> redesNeuronalesPM = new ArrayList<RedNeuronal>();
 
 	public static void main(String args[]){
 
-		VentanaConfiguracionFdA funcionRed = new VentanaConfiguracionFdA();
-		funcionRed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		funcionRed.setSize(260,215);
-		funcionRed.setLocationRelativeTo(null);
-		funcionRed.setResizable(false);
-		funcionRed.setVisible(true);
+		InterfazPrincipal ventanaPrincipal = new InterfazPrincipal();
+		ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventanaPrincipal.setSize(535,375);
+		ventanaPrincipal.setLocationRelativeTo(null);
+		ventanaPrincipal.setResizable(false);
+		ventanaPrincipal.setVisible(true);
+
 
 		/*
+
 		InterfazPrincipal ventanaPrincipal = new InterfazPrincipal();
 		ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventanaPrincipal.setSize(535,375);
@@ -115,6 +122,12 @@ public class RNAPM{
 		funcionRed.setLocationRelativeTo(null);
 		funcionRed.setResizable(false);
 		funcionRed.setVisible(true);
+
 		*/
+		
+	}
+
+	public void establecerNombreRed(String nombreRed){
+		this.nombreRed = nombreRed;
 	}
 }

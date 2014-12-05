@@ -9,6 +9,8 @@
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -40,6 +42,11 @@ public class VentanaMostrarRed extends JFrame{
 		redMostrarJL = new JLabel(" Red a mostar: ");
 
 		salirJB = new JButton("Salir");
+		salirJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				dispose();
+			}
+		});
 
 		redesJCB = new JComboBox();
 		redesJCB.setPreferredSize(new Dimension(150,20));
