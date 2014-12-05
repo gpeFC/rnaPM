@@ -17,61 +17,51 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.BorderFactory;
 
-public class VentanaAplicarRed extends JFrame{
+public class VentanaEntrenarRed extends JFrame{
 
-	private JLabel redAplicarJL;
+	private JLabel redEntrenarJL;
 
-	private JButton aplicarJB;
+	private JButton entrenarJB;
 	private JButton salirJB;
 
 	private JComboBox redesJCB;
 
-	private JTextArea entradaDatosJTA;
-	private JTextArea salidaDatosJTA;
+	private JTextArea datosEntrenarJTA;
 
-	private JPanel panelEntradaDatosJP;
-	private JPanel panelSalidaDatosJP;
+	private JPanel panelEntrenamientoJP;
 	private JPanel panelBotonesAccionJP;
 
-	public VentanaAplicarRed(){
+	public VentanaEntrenarRed(){
 		super("Aplicar Red");
 		setLayout(new FlowLayout());
 
-		redAplicarJL = new JLabel("Red a aplicar: ");
+		redEntrenarJL = new JLabel("Red a entrenar: ");
 
-		aplicarJB = new JButton("Aplicar");
+		entrenarJB = new JButton("Entrenar");
 		salirJB = new JButton("Salir");
 
 		redesJCB = new JComboBox();
 		redesJCB.setPreferredSize(new Dimension(150,20));
 		redesJCB.setMaximumRowCount(3);
 
-		entradaDatosJTA = new JTextArea(8,30);
-		salidaDatosJTA = new JTextArea(8,30);
+		datosEntrenarJTA = new JTextArea(8,30);
 
-		panelEntradaDatosJP = new JPanel();
-		panelEntradaDatosJP.setPreferredSize(new Dimension(350,150));
-		
-		panelSalidaDatosJP = new JPanel();
-		panelSalidaDatosJP.setPreferredSize(new Dimension(350,150));
+		panelEntrenamientoJP = new JPanel();
+		panelEntrenamientoJP.setPreferredSize(new Dimension(350,150));
 		
 		panelBotonesAccionJP = new JPanel();
 		panelBotonesAccionJP.setPreferredSize(new Dimension(350,25));
 		panelBotonesAccionJP.setLayout(new GridLayout(1,2,100,1));
 
-		panelEntradaDatosJP.add(entradaDatosJTA);
-		panelEntradaDatosJP.setBorder(BorderFactory.createTitledBorder("Entrada de Datos"));
+		panelEntrenamientoJP.add(datosEntrenarJTA);
+		panelEntrenamientoJP.setBorder(BorderFactory.createTitledBorder("Patrones de Entrenamiento"));
 
-		panelSalidaDatosJP.add(salidaDatosJTA);
-		panelSalidaDatosJP.setBorder(BorderFactory.createTitledBorder("Salida de Datos"));
-
-		panelBotonesAccionJP.add(aplicarJB);
+		panelBotonesAccionJP.add(entrenarJB);
 		panelBotonesAccionJP.add(salirJB);
 
-		add(redAplicarJL);
+		add(redEntrenarJL);
 		add(redesJCB);
-		add(panelEntradaDatosJP);
-		add(panelSalidaDatosJP);
+		add(panelEntrenamientoJP);
 		add(panelBotonesAccionJP);
 	}
 }
