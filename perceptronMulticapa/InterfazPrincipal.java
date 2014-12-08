@@ -57,10 +57,6 @@ public class InterfazPrincipal extends JFrame{
 		});
 
 		continuarJB = new JButton("Continuar");
-		continuarJB.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent evento){
-			}
-		});
 
 		crearRedJRB = new JRadioButton("Crear Red", false);
 		crearRedJRB.addItemListener(new ItemListener(){

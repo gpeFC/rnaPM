@@ -9,6 +9,8 @@
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -48,7 +50,13 @@ public class VentanaModificarRed extends JFrame{
 		redModificarJL = new JLabel(" Red a modificar: ");
 
 		modificarJB = new JButton("Modificar");
+
 		salirJB = new JButton("Salir");
+		salirJB.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evento){
+				dispose();
+			}
+		});
 
 		nombreRedJRB = new JRadioButton("Nombre/Red");
 		configuracionTdAJRB = new JRadioButton("Configuracion/TasaAprendizaje");

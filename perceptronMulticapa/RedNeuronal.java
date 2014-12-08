@@ -1,13 +1,16 @@
-/******************************************************************************
- * UAEM, Facultad de Ciencias
- * Seminario de Programacion II
- * Emanuel GP
- *
- * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
- ******************************************************************************/
-
 import java.util.ArrayList;
 import java.util.Random;
+
+/**
+ * UAEM, Facultad de Ciencias
+ * Seminario de Programacion II
+ * Proyecto Final
+ * .:Constructor de Resdes Neuronales Artificiales
+ *   tipo Perceptron Multicapa con Retropropagacion
+ * @author :: Emanuel Garcia Perez
+ *
+ */
+
 
 public class RedNeuronal{
 	private String nombreRed;

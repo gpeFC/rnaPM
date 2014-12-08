@@ -1,13 +1,19 @@
-/******************************************************************************
- * UAEM, Facultad de Ciencias
- * Seminario de Programacion II
- * Emanuel GP
- *
- * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
- ******************************************************************************/
-
 import java.util.Random;
 
+/**
+ * UAEM, Facultad de Ciencias
+ * Seminario de Programacion II
+ * Proyecto Final
+ * .:Constructor de Resdes Neuronales Artificiales
+ *   tipo Perceptron Multicapa con Retropropagacion
+ * @author :: Emanuel Garcia Perez
+ *
+ */
+
+/**
+ * Clase que instancia objetos -CapaNeuronal- que constituyen las capas
+ * de neuronas de la topologia de la red. 
+ */
 public class CapaNeuronal{
 	private int[] funciones;		// Indicador de funcion de activacion por neurona.
 	private double[] delthas;		// Delthas calculados de cada neurona.
@@ -16,7 +22,11 @@ public class CapaNeuronal{
 	private double[][] antiguos;	// Pesos anteriores de cada neurona.
 	private Neurona[] neuronas;		// Neuronas de la capa.
 
-	/** Constructor para inicializar el objeto 'capa neuronal'. */
+	/**
+     * Constructor de la clase -CapaNeuronal-
+     * @param numNeurs		Numero de neuronas en la capa.
+     * @param numArgs	    Numero de conexiones presinapticas de la capa.
+     */
 	public CapaNeuronal(int numNeurs, int numArgs){
 		this.entradas = new double[numArgs];
 		for(int i=0; i<numArgs; i++)
@@ -36,6 +46,11 @@ public class CapaNeuronal{
 		}
 	}
 
+	/**
+     * Metodo que permite establecer los indices que indican las 
+     * funciones de activacion respecticas de cada neurona de la capa.
+     * @param funciones 	Indices que indican la funcion de activacion de cada neurona.
+     */
 	public void establecerFunciones(int[] funciones){
 		this.funciones = funciones;
 	}
