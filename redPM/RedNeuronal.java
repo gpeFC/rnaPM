@@ -1,37 +1,40 @@
-/******************************************************************************
- * UAEM, Facultad de Ciencias
- * Seminario de Programacion II
- * Emanuel GP
- *
- * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
- ******************************************************************************/
-
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * UAEM, Facultad de Ciencias
+ * Seminario de Programacion II
+ * Proyecto Final
+ * .:Constructor de Resdes Neuronales Artificiales
+ *   tipo Perceptron Multicapa con Retropropagacion
+ * @author :: Emanuel Garcia Perez
+ *
+ */
+
+
 public class RedNeuronal{
-	private String nombre;
+	private String nombreRed;
 	private String configuracionAlphas;
 	private String configuracionFunciones;
 	private ArrayList<CapaNeuronal> redNeuronal;
 
-	public RedNeuronal(String nombre, String configAlphas, String configFunciones){
-		this.nombre = nombre;
+	public RedNeuronal(String nombreRed, String configAlphas, String configFunciones){
+		this.nombreRed = nombreRed;
 		this.configuracionAlphas = configAlphas;
 		this.configuracionFunciones = configFunciones;
 		this.redNeuronal = null;
 	}
 
 	public String obtenerNombreRed(){
-		return this.nombre;
+		return this.nombreRed;
 	}
 
 	public ArrayList<CapaNeuronal> obtenerRedNeuronal(){
 		return this.redNeuronal;
 	}
 
-	public void establecerNombreRed(String nombre){
-		this.nombre = nombre;
+	public void establecerNombreRed(String nombreRed){
+		this.nombreRed = nombreRed;
 	}
 
 	public void establecerConfiguracionAlphas(String configuracionAlphas){
@@ -197,7 +200,7 @@ public class RedNeuronal{
 
 	public void mostrarDatosPerceptron(){
 		CapaNeuronal capa;
-		System.out.printf("\nNombre:                  %s", this.nombre);
+		System.out.printf("\nNombre:                  %s", this.nombreRed);
 		System.out.printf("\nConfiguracion/TDA:       %s", this.configuracionAlphas);
 		System.out.printf("\nConfiguracion/Funciones: %s", this.configuracionFunciones);
 		for(int i=0; i<this.redNeuronal.size(); i++){
