@@ -198,7 +198,12 @@ public class CapaNeuronal{
 		}
 	}
 
-	/** Método para calcular y establecer el deltha de cada neurona de las capas ocultas. */
+	/**
+     * Metodo que permite calcular el error ponderado cometido por cada neurona de 
+     * las capas ocultas para poder retropropagarlos.
+     * @param delthas 		Errores ponderados de cada neurona de la capa posterior.
+     * @param neuronas 		Vector de neuronas de la capa posterior.
+     */
 	public void calcularDelthas(double[] deltas, Neurona[] neuronas){
 		double sumaDeltha, pesos[];
 		for(int i=0; i<this.neuronas.length; i++){
@@ -218,7 +223,10 @@ public class CapaNeuronal{
 		}
 	}
 
-	/** Método para calcular y establecer la salida de cada neurona de la capa en un mismo arreglo. */
+	/**
+     * Metodo que permite calcular y almacenar en un vector las salidas
+     * de cada neurona de la capa.
+     */
 	public void calcularSalidas(){
 		for(int i=0; i<this.neuronas.length; i++){
 			this.neuronas[i].calcularSalida(this.funciones[i], this.entradas);
@@ -226,6 +234,13 @@ public class CapaNeuronal{
 		}
 	}
 
+	/**
+     * Metodo que permite calcular el incremento ponderado en los pesos sinapticos
+     * de las neuronas de la capa respecto a sus respectivos pesos en la epoca anterior.
+     * @param indice 			Indice para cotejar la neurona que esta siendo verificada.
+     * @param presosPrevios		Vector de pesos sinapticos de las neuronas de la capa en la epoca anterior.
+     * @param pesosActuales		Vector de pesos sinapticos actuales de las neuronas de la capa.
+     */
 	public void calcularIncremento(int indice, double[] pesosPrevios, double[] pesosActuales){
 		for(int i=0; i<pesosPrevios.length; i++)
 			this.antiguos[indice][i] = pesosPrevios[i] - pesosActuales[i];
