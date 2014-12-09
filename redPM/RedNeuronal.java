@@ -16,6 +16,7 @@ import java.util.Random;
  * una red neuronal en si. 
  */
 public class RedNeuronal{
+	private int[] numNeursCapa;
 	private String nombreRed;
 	private String configuracionAlphas;
 	private String configuracionFunciones;
@@ -23,11 +24,13 @@ public class RedNeuronal{
 
 	/**
      * Constructor de la clase -RedNeuronal-
+     * @param numNeursCaoa		Vector que contiene los indices que indican el numero de neuronas de cada capa de la red.
      * @param nombreRed			Nombre para identificar a la red.
      * @param configAlphas	    Configuracion del factor de aprendizaje de la red.
      * @param configFunciones	Configuracion de las funciones de activacion de la red.
      */
-	public RedNeuronal(String nombreRed, String configAlphas, String configFunciones){
+	public RedNeuronal(int[] numNeursCapa, String nombreRed, String configAlphas, String configFunciones){
+		this.numNeursCapa = numNeursCapa;
 		this.nombreRed = nombreRed;
 		this.configuracionAlphas = configAlphas;
 		this.configuracionFunciones = configFunciones;
