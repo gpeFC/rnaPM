@@ -29,9 +29,9 @@ public class RNAPM{
 		ArrayList<RedNeuronal> redesNeuronalesPerceptron = new ArrayList<RedNeuronal>();
 		
 
-		InterfazRNAPM interfazGrafica = new InterfazRNAPM();
+		InterfazSecciones interfazGrafica = new InterfazSecciones();
 		interfazGrafica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		interfazGrafica.setSize(600, 400);
+		interfazGrafica.setSize(515, 475);
 		interfazGrafica.setVisible(true);
 
 		/*
