@@ -10,6 +10,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import javax.swing.JFrame;
 
 public class RNAPM{
 	public static void main(String[] args){
@@ -27,6 +28,13 @@ public class RNAPM{
 		ArrayList<CapaNeuronal> redNeural=null;
 		ArrayList<RedNeuronal> redesNeuronalesPerceptron = new ArrayList<RedNeuronal>();
 		
+
+		InterfazRNAPM interfazGrafica = new InterfazRNAPM();
+		interfazGrafica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		interfazGrafica.setSize(700, 500);
+		interfazGrafica.setVisible(true);
+
+		/*
 		while(continuar){
 			limpiarPantalla();
 			System.out.printf("\n\n\tRed Neuronal Artificial Perceptron...\n\n");
@@ -742,8 +750,10 @@ public class RNAPM{
 				continuar = false;
 			}
 		}
+		*/
 	}
 
+	/*
 	public static void configuracionAlphas(RedNeuronal rnap){
 		byte config=0;
 		String configAlphas=null;
@@ -966,4 +976,5 @@ public class RNAPM{
 		for(int i=0; i<100; i++)
 			System.out.println();
 	}
+	*/
 }
