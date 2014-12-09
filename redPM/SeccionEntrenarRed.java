@@ -26,8 +26,6 @@ public class SeccionEntrenarRed extends JPanel{
 	private JLabel algoritmoEntrenamientoASJL;
 	private JLabel condicionAltoEntrenamientoASJL;
 
-	private JButton entrenarRedJB;
-
 	private JComboBox redesEntrenarJCB;
 	private JComboBox algoritmoEntrenamientoASJCB;
 	private JComboBox condicioncondicionAltoEntrenamientoASJCB;
@@ -41,8 +39,6 @@ public class SeccionEntrenarRed extends JPanel{
 		redEntrenarJL = new JLabel("Red a entrenar:");
 		algoritmoEntrenamientoASJL = new JLabel("Algoritmo de entrenamiento");
 		condicionAltoEntrenamientoASJL = new JLabel("Condicion de alto del entrenamiento");
-
-		entrenarRedJB = new JButton("Entrenar");
 
 		redesEntrenarJCB = new JComboBox();
 		redesEntrenarJCB.setPreferredSize(new Dimension(200,25));
@@ -72,6 +68,5 @@ public class SeccionEntrenarRed extends JPanel{
 		add(condicioncondicionAltoEntrenamientoASJCB);
 		add(algoritmoEntrenamientoASJL);
 		add(algoritmoEntrenamientoASJCB);
-		add(entrenarRedJB);
 	}
 }

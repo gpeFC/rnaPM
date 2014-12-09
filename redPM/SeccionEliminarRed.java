@@ -19,15 +19,11 @@ public class SeccionEliminarRed extends JPanel{
 	private JLabel eliminarRedJL;
 	private JLabel redEliminarJL;
 
-	private JButton eliminarRedJB;
-
 	private JComboBox redesEliminarJCB;
 
 	public SeccionEliminarRed(){
 		eliminarRedJL = new JLabel("Eliminar Red", SwingConstants.CENTER);
 		redEliminarJL = new JLabel("Red a eliminar:");
-
-		eliminarRedJB = new JButton("Eliminar");
 
 		redesEliminarJCB = new JComboBox();
 		redesEliminarJCB.setPreferredSize(new Dimension(200,25));
@@ -36,6 +32,5 @@ public class SeccionEliminarRed extends JPanel{
 		add(eliminarRedJL);
 		add(redEliminarJL);
 		add(redesEliminarJCB);
-		add(eliminarRedJB);
 	}
 }

@@ -23,8 +23,6 @@ public class SeccionModificarRed extends JPanel{
 	private JLabel redModificarJL;
 	private JLabel parametroModificarJL;
 
-	private JButton modificarRedJB;
-
 	private JComboBox redesModificarJCB;
 	private JComboBox parametrosModificarJCB;
 
@@ -32,8 +30,6 @@ public class SeccionModificarRed extends JPanel{
 		modificarRedJL = new JLabel("Modificar Red", SwingConstants.CENTER);
 		redModificarJL = new JLabel("Red a modificar:");
 		parametroModificarJL = new JLabel("Parametro a modificar");
-
-		modificarRedJB = new JButton("Modificar");
 
 		redesModificarJCB = new JComboBox();
 		redesModificarJCB.setPreferredSize(new Dimension(200,25));
@@ -48,6 +44,5 @@ public class SeccionModificarRed extends JPanel{
 		add(redesModificarJCB);
 		add(parametroModificarJL);
 		add(parametrosModificarJCB);
-		add(modificarRedJB);
 	}
 }

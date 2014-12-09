@@ -19,8 +19,6 @@ public class SeccionAplicarRed extends JPanel{
 	private JLabel aplicarRedJL;
 	private JLabel redAplicarJL;
 
-	private JButton aplicarRedJB;
-
 	private JComboBox redesAplicarJCB;
 
 	private JTextArea entradaDatosAplicarJTA;
@@ -32,8 +30,6 @@ public class SeccionAplicarRed extends JPanel{
 	public SeccionAplicarRed(){
 		aplicarRedJL = new JLabel("Aplicar Red", SwingConstants.CENTER);
 		redAplicarJL = new JLabel("Red a aplicar:");
-
-		aplicarRedJB = new JButton("Aplicar");
 
 		redesAplicarJCB = new JComboBox();
 		redesAplicarJCB.setPreferredSize(new Dimension(200,25));
@@ -59,6 +55,5 @@ public class SeccionAplicarRed extends JPanel{
 		add(redesAplicarJCB);
 		add(panelEntradaDatosAplicarJP);
 		add(panelSalidaDatosAplicarJP);
-		add(aplicarRedJB);
 	}
 }

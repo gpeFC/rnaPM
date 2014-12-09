@@ -30,6 +30,9 @@ public class InterfazSecciones extends JFrame{
 
 	private JButton crearRedJB;
 	private JButton entrenarRedJB;
+	private JButton aplicarRedJB;
+	private JButton modificarRedJB;
+	private JButton eliminarRedJB;
 
 	static RedNeuronal redNeuralPM;
 
@@ -51,6 +54,9 @@ public class InterfazSecciones extends JFrame{
 
 		crearRedJB = new JButton("Crear");
 		entrenarRedJB = new JButton("Entrenar");
+		aplicarRedJB = new JButton("Aplicar");
+		modificarRedJB = new JButton("Modificar");
+		eliminarRedJB = new JButton("Eliminar");
 
 		crearRedJB.addActionListener(manejador);
 		entrenarRedJB.addActionListener(manejador);
@@ -65,6 +71,10 @@ public class InterfazSecciones extends JFrame{
 		panelPrincipalJTP = new JTabbedPane();
 
 		seccionCrearRed.add(crearRedJB);
+		seccionEntrenarRed.add(entrenarRedJB);
+		seccionAplicarRed.add(aplicarRedJB);
+		seccionModificarRed.add(modificarRedJB);
+		seccionEliminarRed.add(eliminarRedJB);
 
 		panelPrincipalJTP.addTab("CREAR", null, seccionCrearRed, "Primer panel");
 		panelPrincipalJTP.addTab("ENTRENAR", null, seccionEntrenarRed, "Segundo panel");
