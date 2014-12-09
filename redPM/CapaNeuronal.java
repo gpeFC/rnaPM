@@ -55,15 +55,28 @@ public class CapaNeuronal{
 		this.funciones = funciones;
 	}
 
+	/**
+     * Metodo que permite establecer las entradas sinapticas de la capa neuronal.
+     * @param entradas 	Entradas sinapticas de la capa neuronal.
+     */
 	public void establecerEntrada(double[] entradas){
 		this.entradas = entradas;
 	}
 
+	/**
+     * Metodo que permite establecer un mismo factor de aprendizaje en todas las
+     * neuronas de la capa.
+     * @param alpha 	Factor de aprendizaje de la red.
+     */
 	public void establecerAlphas(double alpha){
 		for(int i=0; i<this.neuronas.length; i++)
 			this.neuronas[i].establecerAlpha(alpha);
 	}
 
+	/**
+     * Metodo que permite establecer un factor de aprendizaje diferente para cada
+     * neurona de la capa.
+     */
 	public void establecerAlphas(){
 		double alpha=0.0;
 		for(int i=0; i<this.neuronas.length; i++){
@@ -75,18 +88,33 @@ public class CapaNeuronal{
 		}
 	}
 
+	/**
+     * Metodo que permite recuperar el vector de indices de las funciones de activacion
+     * de la capa.
+     */
 	public int[] obtenerFunciones(){
 		return this.funciones;
 	}
 
+	/**
+     * Metodo que permite recuperar el vector de errores asociados a cada neurona de la
+     * capa para retropropagarlos.
+     */
 	public double[] obtenerDelthas(){
 		return this.delthas;
 	}
 
+	/**
+     * Metodo que permite recuperar el vector de las salidas calculadas de cada neurona
+     * de la capa.
+     */
 	public double[] obtenerSalidas(){
 		return this.salidas;
 	}
 
+	/**
+     * Metodo que permite recuperar la matriz de pesos sinapticos de cada neurona de la capa.
+     */
 	public double[][] obtenerPesosActuales(){
 		double[][] pesos = new double[this.neuronas.length][this.entradas.length];
 		for(int i=0; i<this.neuronas.length; i++)
@@ -94,10 +122,17 @@ public class CapaNeuronal{
 		return pesos;
 	}
 
+	/**
+     * Metodo que permite recuperar la matriz de pesos sinapticos de la epoca anterior
+     * de propagacion de las neuronas de la capa.
+     */
 	public double[][] obtenerPesosAntiguos(){
 		return this.antiguos;
 	}
 
+	/**
+     * Metodo que permite recuperar el vector de neuronas de la capa.
+     */
 	public Neurona[] obtenerNeuronas(){
 		return this.neuronas;
 	}
@@ -105,7 +140,9 @@ public class CapaNeuronal{
 	public void actualizarAlphas(){
 	}
 
-	/** Método para actualizar el valor del umbral\bias de cada una de las neuronas de la capa.(Multicapa) */
+	/**
+     * Metodo que permite actualizar el valor de los biases de cada neurona de la capa.
+     */
 	public void actualizarBiases(){
 		double biasActual, biasNuevo=0.0;
 		for(int i=0; i<this.neuronas.length; i++){
@@ -116,7 +153,12 @@ public class CapaNeuronal{
 		}
 	}
 
-	/** Método para actualizar el valor de los pesos sinapticos de cada una de las neuronas de la capa.(Multicapa) */
+	/**
+     * Metodo que permite actualizar el valor de los pesos sinapticos de cada neurona
+     * de la capa.
+     * @param eta 		Error retropropagado para actualizar los pesos sinapticos.
+     * @param indice 	Indice para cotejar la neurona  a ser actualizada.
+     */
 	public void actualizarPesos(double eta, int indice){
 		double[] pesosActuales;
 		double[] pesosNuevos = new double[this.entradas.length];
@@ -138,7 +180,11 @@ public class CapaNeuronal{
 		}
 	}
 
-	/** Método para calcular y establecer el deltha de cada neurona de la capa de salida. */
+	/**
+     * Metodo que permite calcular el error ponderado cometido por cada neurona de 
+     * la capa de salida para poder retropropagarlos.
+     * @param errores 		Vector de errores cometidos por cada neurona de la capa de salida.
+     */
 	public void calcularDelthas(double[] errores){
 		for(int i=0; i<this.neuronas.length; i++){
 			if(this.funciones[i] == 1)
