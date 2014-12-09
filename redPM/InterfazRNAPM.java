@@ -119,53 +119,53 @@ public class InterfazRNAPM extends JFrame{
 		redesEliminarJCB.setMaximumRowCount(3);
 
 		panelVacio0JP = new JPanel();
-		panelVacio0JP.setPreferredSize(new Dimension(500,5));
+		panelVacio0JP.setPreferredSize(new Dimension(400,5));
 		panelVacio1JP = new JPanel();
-		panelVacio1JP.setPreferredSize(new Dimension(500,5));
+		panelVacio1JP.setPreferredSize(new Dimension(400,5));
 		panelVacio2JP = new JPanel();
-		panelVacio2JP.setPreferredSize(new Dimension(500,5));
+		panelVacio2JP.setPreferredSize(new Dimension(400,5));
 		panelVacio3JP = new JPanel();
-		panelVacio3JP.setPreferredSize(new Dimension(500,5));
+		panelVacio3JP.setPreferredSize(new Dimension(400,5));
 		panelVacio4JP = new JPanel();
-		panelVacio4JP.setPreferredSize(new Dimension(500,5));
+		panelVacio4JP.setPreferredSize(new Dimension(400,5));
 		panelVacio5JP = new JPanel();
-		panelVacio5JP.setPreferredSize(new Dimension(500,5));
+		panelVacio5JP.setPreferredSize(new Dimension(400,5));
 		panelVacio7JP = new JPanel();
-		panelVacio7JP.setPreferredSize(new Dimension(500,5));
+		panelVacio7JP.setPreferredSize(new Dimension(400,5));
 		panelVacio8JP = new JPanel();
-		panelVacio8JP.setPreferredSize(new Dimension(500,5));
+		panelVacio8JP.setPreferredSize(new Dimension(400,5));
 		panelVacio6JP = new JPanel();
-		panelVacio6JP.setPreferredSize(new Dimension(500,5));
+		panelVacio6JP.setPreferredSize(new Dimension(400,5));
 		panelVacio9JP = new JPanel();
-		panelVacio9JP.setPreferredSize(new Dimension(500,5));
+		panelVacio9JP.setPreferredSize(new Dimension(400,5));
 		panelVacio10JP = new JPanel();
-		panelVacio10JP.setPreferredSize(new Dimension(500,5));
+		panelVacio10JP.setPreferredSize(new Dimension(400,5));
 		panelVacio11JP = new JPanel();
-		panelVacio11JP.setPreferredSize(new Dimension(500,5));
+		panelVacio11JP.setPreferredSize(new Dimension(400,5));
 
 		panelTituloCrearJP = new JPanel();
 		panelTituloCrearJP.setLayout(new FlowLayout());
-		panelTituloCrearJP.setPreferredSize(new Dimension(500,25));
+		panelTituloCrearJP.setPreferredSize(new Dimension(400,25));
 
 		panelTituloEntrenarJP = new JPanel();
 		panelTituloEntrenarJP.setLayout(new FlowLayout());
-		panelTituloEntrenarJP.setPreferredSize(new Dimension(500,25));
+		panelTituloEntrenarJP.setPreferredSize(new Dimension(400,25));
 
 		panelTituloAplicarJP = new JPanel();
 		panelTituloAplicarJP.setLayout(new FlowLayout());
-		panelTituloAplicarJP.setPreferredSize(new Dimension(500,25));
+		panelTituloAplicarJP.setPreferredSize(new Dimension(400,25));
 
 		panelTituloMostrarJP = new JPanel();
 		panelTituloMostrarJP.setLayout(new FlowLayout());
-		panelTituloMostrarJP.setPreferredSize(new Dimension(500,25));
+		panelTituloMostrarJP.setPreferredSize(new Dimension(400,25));
 
 		panelTituloModificarJP = new JPanel();
 		panelTituloModificarJP.setLayout(new FlowLayout());
-		panelTituloModificarJP.setPreferredSize(new Dimension(500,25));
+		panelTituloModificarJP.setPreferredSize(new Dimension(400,25));
 
 		panelTituloEliminarJP = new JPanel();
 		panelTituloEliminarJP.setLayout(new FlowLayout());
-		panelTituloEliminarJP.setPreferredSize(new Dimension(500,25));
+		panelTituloEliminarJP.setPreferredSize(new Dimension(400,25));
 
 		panelElementosCrearJP = new JPanel();
 		panelElementosEntrenarJP = new JPanel();

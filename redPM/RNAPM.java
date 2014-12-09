@@ -31,7 +31,7 @@ public class RNAPM{
 
 		InterfazRNAPM interfazGrafica = new InterfazRNAPM();
 		interfazGrafica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		interfazGrafica.setSize(700, 500);
+		interfazGrafica.setSize(600, 400);
 		interfazGrafica.setVisible(true);
 
 		/*
