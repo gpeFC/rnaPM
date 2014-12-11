@@ -91,12 +91,22 @@ public class InterfazSecciones extends JFrame{
 
 	private class ManejadorEventosActionListener implements ActionListener{
 		public void actionPerformed( ActionEvent evento ){
-			RedNeuronal redNeuronalPM;
+			boolean bandera = false;
+			String[] nombresRedesExistentes = null;
+			RedNeuronal redNeuronalPM = null;
 			if(evento.getSource() == crearRedJB){
 				int[] numNeursCapa = seccionCrearRed.obtenerNumeroNeuronasCapa();
 				String nombre = seccionCrearRed.obtenerNombreRed();
 				String configTdA = seccionCrearRed.obtenerConfiguracionTasaAprendizaje();
 				String configFdA = seccionCrearRed.obtenerConfiguracionFuncionActivacion();
+
+				if(redesNeuronalesPMR.size() > 0){
+					nombresRedesExistentes = new String[redesNeuronalesPMR.size()];
+					for(int i=0; i<redesNeuronalesPMR.size(); i++){
+						redNeuronalPM = redesNeuronalesPMR.get(i);
+						nombresRedesExistentes[i] = redNeuronalPM.obtenerNombreRed();
+					}
+				}
 
 				if((numNeursCapa!=null) && (nombre!=null) && (configTdA!=null) && (configFdA!=null)){
 					redNeuronalPM = new RedNeuronal(numNeursCapa,nombre,configTdA,configFdA);
