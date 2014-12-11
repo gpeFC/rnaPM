@@ -23,46 +23,42 @@ import java.util.InputMismatchException;
 
 public class SeccionCrearRed extends JPanel{
 
-	private int numeroCapas;
-	private int[] numeroNeuronasCapa;
+	private int[] numeroNeuronasCapa = null;
+	private String nombreRed = null;
+	private String configuracionTasaAprendizaje = null;
+	private String configuracionFuncionActivacion = null;
 
-	private String nombreRed;
-	private String configuracionTdA;
-	private String configuracionFdA;
-
-	private final String tasaAprendizajeAS[] = {"...","TasaAprendizaje / Red","TasaAprendizaje / Capa",
-												 "TasaAprendizaje / Neurona"};
-	private final String funcionActivacionAS[] = {"...","FuncionActivacion / Red","FuncionActivacion / Capa",
-												 "FuncionActivacion / Neurona","FuncionActivacion / SalidaOcultas"};
+	private final String[] tasaAprendizajeAS = {"","TasaAprendizaje/Red","TasaAprendizaje/Capa",
+												 "TasaAprendizaje/Neurona"};
+	private final String[] funcionActivacionAS = {"","FuncionActivacion/Red","FuncionActivacion/Capa",
+												 "FuncionActivacion/Neurona","FuncionActivacion/SalidaOcultas"};
 	private JLabel crearRedJL;
 	private JLabel nombreRedJL;
-	private JLabel numeroCapasJL;
-	private JLabel numeroNeuronasCapaJL;
+	private JLabel neuronasCapaJL;
 	private JLabel tasaAprendizajeJL;
 	private JLabel funcionActivacionJL;
 
 	private JTextField nombreRedJTF;
-	private JTextField numeroCapasJTF;
-	private JTextField numeroNeuronasCapaJTF;
+	private JTextField neuronasCapaJTF;
 
 	private JComboBox tasaAprendizajeJCB;
 	private JComboBox funcionActivacionJCB;
 
+	private ManejadorEventosActionListener manejadorTexto;
+	private ManejadorEventosItemListener manejadorOpciones;
+
 	public SeccionCrearRed(){
-		ManejadorCampoTexto manejadorTexto = new ManejadorCampoTexto();
-		ManejadorJCombobox manejadorOpciones = new ManejadorJCombobox();
+		manejadorTexto = new ManejadorEventosActionListener();
+		manejadorOpciones = new ManejadorEventosItemListener();
 
 		crearRedJL = new JLabel("Crear Red", SwingConstants.CENTER);
 		nombreRedJL = new JLabel("Nombre de red:");
-		numeroCapasJL = new JLabel("Numero de capas:");
-		numeroNeuronasCapaJL = new JLabel("Numero de neuronas por capa[numC1,numC1,...,numCn]:");
+		neuronasCapaJL = new JLabel("Numero de neuronas por capa:");
 		tasaAprendizajeJL = new JLabel("Tasa de Aprendizaje:");
 		funcionActivacionJL = new JLabel("Funcion de Activacion:");
 
-
-		nombreRedJTF = new JTextField(15);
-		numeroCapasJTF = new JTextField(15);
-		numeroNeuronasCapaJTF = new JTextField(15);
+		nombreRedJTF = new JTextField("",15);
+		neuronasCapaJTF = new JTextField("",15);
 
 		tasaAprendizajeJCB = new JComboBox(tasaAprendizajeAS);
 		tasaAprendizajeJCB.setPreferredSize(new Dimension(320,25));
@@ -73,8 +69,7 @@ public class SeccionCrearRed extends JPanel{
 		funcionActivacionJCB.setMaximumRowCount(3);
 
 		nombreRedJTF.addActionListener(manejadorTexto);
-		numeroCapasJTF.addActionListener(manejadorTexto);
-		numeroNeuronasCapaJTF.addActionListener(manejadorTexto);
+		neuronasCapaJTF.addActionListener(manejadorTexto);
 
 		tasaAprendizajeJCB.addItemListener(manejadorOpciones);
 		funcionActivacionJCB.addItemListener(manejadorOpciones);
@@ -82,24 +77,26 @@ public class SeccionCrearRed extends JPanel{
 		add(crearRedJL);
 		add(nombreRedJL);
 		add(nombreRedJTF);
-		add(numeroCapasJL);
-		add(numeroCapasJTF);
-		add(numeroNeuronasCapaJL);
-		add(numeroNeuronasCapaJTF);
+		add(neuronasCapaJL);
+		add(neuronasCapaJTF);
 		add(tasaAprendizajeJL);
 		add(tasaAprendizajeJCB);
 		add(funcionActivacionJL);
 		add(funcionActivacionJCB);
 	}
 
-	public void vaciarElementosRed(){
-		numeroNeuronasCapa = null;
-		nombreRed = null;
-		configuracionTdA = null;
-		configuracionFdA = null;
+	public void borrarDatosReiniciarConfiguracion(){
+		this.numeroNeuronasCapa = null;
+		this.nombreRed = null;
+		this.configuracionTasaAprendizaje = null;
+		this.configuracionFuncionActivacion = null;
+		nombreRedJTF.setText("");
+		neuronasCapaJTF.setText("");
+		//tasaAprendizajeJCB.setSelectedIndex(0);
+		//funcionActivacionJCB.setSelectedIndex(0);
 	}
 
-	public int[] obtenerArregloNumNeursCapa(){
+	public int[] obtenerNumeroNeuronasCapa(){
 		return numeroNeuronasCapa;
 	}
 
@@ -107,84 +104,68 @@ public class SeccionCrearRed extends JPanel{
 		return nombreRed;
 	}
 
-	public String obtenerConfiguracionTdA(){
-		return configuracionTdA;
+	public String obtenerConfiguracionTasaAprendizaje(){
+		return configuracionTasaAprendizaje;
 	}
 
-	public String obtenerconfiguracionFdA(){
-		return configuracionFdA;
+	public String obtenerConfiguracionFuncionActivacion(){
+		return configuracionFuncionActivacion;
 	}
 
-	private class ManejadorCampoTexto implements ActionListener{
-		public void actionPerformed( ActionEvent evento ){
+	private class ManejadorEventosActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent evento){
 			String cadena = "";
 			 if(evento.getSource() == nombreRedJTF){
 				cadena = String.format("%s", evento.getActionCommand());
 				if(cadena.length() >= 4)
 					nombreRed = cadena.toUpperCase();
 				else
-					JOptionPane.showMessageDialog(null, "El nombre de la red debe tener al menos 4 caracteres.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El nombre de la red debe tener al menos 4 caracteres.","Dato incorrecto(Error nombre)", JOptionPane.ERROR_MESSAGE);
 			}
-			else if(evento.getSource() == numeroCapasJTF){
+			else if(evento.getSource() == neuronasCapaJTF){
+				int[] arregloNumCapasAi;
 				cadena = String.format("%s", evento.getActionCommand());
 				try{
-					int numCapas = Integer.parseInt(cadena);
-					if(numCapas > 0)
-						numeroCapas = numCapas;
-					else
-						JOptionPane.showMessageDialog(null, "El numero de capas debe ser positivo.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
-				}
-				catch(Exception excepcion){
-					JOptionPane.showMessageDialog(null, "El numero de capas debe ser un numero entero positivo.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-			else if(evento.getSource() == numeroNeuronasCapaJTF){
-				int[] numCapas;
-				try{
-					cadena = String.format("%s", evento.getActionCommand());
-					String[] arregloNumCapas = cadena.split(",");
-					numCapas = new int[arregloNumCapas.length];
-					for(int i=0;i<arregloNumCapas.length; i++){
+					String[] arregloNumCapasAS = cadena.split(",");
+					arregloNumCapasAi = new int[arregloNumCapasAS.length];
+					for(int i=0;i<arregloNumCapasAS.length; i++){
 						try{
-							int numCapa = Integer.parseInt(arregloNumCapas[i]);
+							int numCapa = Integer.parseInt(arregloNumCapasAS[i]);
 							if(numCapa > 0)
-								numCapas[i] = numCapa;
+								arregloNumCapasAi[i] = numCapa;
 							else{
-								JOptionPane.showMessageDialog(null, "El numero de neuronas debe ser un numero entero positivo.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "El numero de neuronas por capa debe ser un numero entero positivo.","Dato incorrecto(Numero negativo)", JOptionPane.ERROR_MESSAGE);
 								break;
 							}
 						}
 						catch(Exception excepcion){
-							JOptionPane.showMessageDialog(null, "El numero de neuronas debe ser un numero entero positivo.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El numero de neuronas por capa debe ser un numero entero positivo.","Dato incorrecto(Error parseo)", JOptionPane.ERROR_MESSAGE);
 							break;
 						}
 					}
-					if(numCapas.length == numeroCapas)
-						numeroNeuronasCapa = numCapas;
-					else
-						JOptionPane.showMessageDialog(null, "Debe ingresar un numero de neuronas por cada capa.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+					numeroNeuronasCapa = arregloNumCapasAi;
 				}
 				catch(Exception excepcion){
-					JOptionPane.showMessageDialog(null, "El numero de neuronas debe ser un numero entero positivo.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Debes separar por comas(,) cada numero de neuronas de cada capa.","Sintaxis incorrecta(Error config neurs capa)", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}
 	}
 
-	private class ManejadorJCombobox implements ItemListener{
+	private class ManejadorEventosItemListener implements ItemListener{
 		public void itemStateChanged(ItemEvent evento){
 			if (evento.getStateChange() == ItemEvent.SELECTED){
 				if(evento.getSource() == tasaAprendizajeJCB){
 					if(tasaAprendizajeJCB.getSelectedIndex() == 0)
-						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
-					else if(tasaAprendizajeJCB.getSelectedIndex() == 1)
-						configuracionTdA = "TDA/RED";
+						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Configuracion incorrecta(TdA)", JOptionPane.ERROR_MESSAGE);
+					else
+						configuracionTasaAprendizaje = tasaAprendizajeAS[tasaAprendizajeJCB.getSelectedIndex()];
 				}
 				else if(evento.getSource() == funcionActivacionJCB){
 					if(funcionActivacionJCB.getSelectedIndex() == 0)
-						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
-					else if(funcionActivacionJCB.getSelectedIndex() == 1)
-						configuracionFdA = "FDA/RED";
+						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Configuracion incorrecta(FdA)", JOptionPane.ERROR_MESSAGE);
+					else
+						configuracionFuncionActivacion = funcionActivacionAS[funcionActivacionJCB.getSelectedIndex()];
 				}
 			}
 		}

@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class InterfazSecciones extends JFrame{
@@ -34,10 +35,6 @@ public class InterfazSecciones extends JFrame{
 	private JButton modificarRedJB;
 	private JButton eliminarRedJB;
 
-	static RedNeuronal redNeuralPM;
-
-	public ArrayList<RedNeuronal> redesNeuronalesPerceptron = new ArrayList<RedNeuronal>();
-
 	private SeccionCrearRed seccionCrearRed;
 	private SeccionEntrenarRed seccionEntrenarRed;
 	private SeccionAplicarRed seccionAplicarRed;
@@ -47,10 +44,16 @@ public class InterfazSecciones extends JFrame{
 
 	private JTabbedPane panelPrincipalJTP;
 
+	private ArrayList<RedNeuronal> redesNeuronalesPMR;
+
+	private ManejadorEventosActionListener manejador;
+
 	public InterfazSecciones(){
 		super("RNA - Perceptron Multicapa con Retropropagacion");
 
-		ManejadorCampoTexto manejador = new ManejadorCampoTexto();
+		redesNeuronalesPMR = new ArrayList<RedNeuronal>();
+
+		manejador = new ManejadorEventosActionListener();
 
 		crearRedJB = new JButton("Crear");
 		entrenarRedJB = new JButton("Entrenar");
@@ -76,35 +79,33 @@ public class InterfazSecciones extends JFrame{
 		seccionModificarRed.add(modificarRedJB);
 		seccionEliminarRed.add(eliminarRedJB);
 
-		panelPrincipalJTP.addTab("CREAR", null, seccionCrearRed, "Primer panel");
-		panelPrincipalJTP.addTab("ENTRENAR", null, seccionEntrenarRed, "Segundo panel");
-		panelPrincipalJTP.addTab("APLICAR", null, seccionAplicarRed, "Tercer panel");
-		panelPrincipalJTP.addTab("MOSTRAR", null, seccionMostrarRed, "Cuarto panel");
-		panelPrincipalJTP.addTab("MODIFICAR", null, seccionModificarRed, "Quinto panel");
-		panelPrincipalJTP.addTab("ELIMINAR", null, seccionEliminarRed, "Sexto panel");
+		panelPrincipalJTP.addTab("CREAR", null, seccionCrearRed, "Seccion - Crear Red");
+		panelPrincipalJTP.addTab("ENTRENAR", null, seccionEntrenarRed, "Seccion - Entrenar Red");
+		panelPrincipalJTP.addTab("APLICAR", null, seccionAplicarRed, "Seccion - Aplicar Red");
+		panelPrincipalJTP.addTab("MOSTRAR", null, seccionMostrarRed, "Seccion - Mostrar Red");
+		panelPrincipalJTP.addTab("MODIFICAR", null, seccionModificarRed, "Seccion - Modificar Red");
+		panelPrincipalJTP.addTab("ELIMINAR", null, seccionEliminarRed, "Seccion - Eliminar Red");
 
 		add(panelPrincipalJTP);
 	}
 
-	private class ManejadorCampoTexto implements ActionListener{
+	private class ManejadorEventosActionListener implements ActionListener{
 		public void actionPerformed( ActionEvent evento ){
-			
+			RedNeuronal redNeuronalPM;
 			if(evento.getSource() == crearRedJB){
-				
-				int[] arregloNumsCapa = seccionCrearRed.obtenerArregloNumNeursCapa();
+				int[] numNeursCapa = seccionCrearRed.obtenerNumeroNeuronasCapa();
 				String nombre = seccionCrearRed.obtenerNombreRed();
-				String configTdA = seccionCrearRed.obtenerConfiguracionTdA();
-				String configFdA = seccionCrearRed.obtenerconfiguracionFdA();
-			
-				redNeuralPM = new RedNeuronal(arregloNumsCapa,nombre,configTdA,configFdA);
-				
-				if(redNeuralPM != null){
-					redesNeuronalesPerceptron.add(redNeuralPM);
-					System.out.printf("\nRed guardada...\n");
-					redNeuralPM = null;
+				String configTdA = seccionCrearRed.obtenerConfiguracionTasaAprendizaje();
+				String configFdA = seccionCrearRed.obtenerConfiguracionFuncionActivacion();
+
+				if((numNeursCapa!=null) && (nombre!=null) && (configTdA!=null) && (configFdA!=null)){
+					redNeuronalPM = new RedNeuronal(numNeursCapa,nombre,configTdA,configFdA);
+					redesNeuronalesPMR.add(redNeuronalPM);
+					seccionCrearRed.borrarDatosReiniciarConfiguracion();
+					JOptionPane.showMessageDialog(null, "Red neuronal creada y almacenada correctamente.","Creacion de red correcta", JOptionPane.PLAIN_MESSAGE);
 				}
-				
-				seccionCrearRed.vaciarElementosRed();
+				else
+					JOptionPane.showMessageDialog(null, "Debes establecer los datos de configuracion de la red.","Configuracion incorrecta", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
