@@ -109,10 +109,22 @@ public class InterfazSecciones extends JFrame{
 				}
 
 				if((numNeursCapa!=null) && (nombre!=null) && (configTdA!=null) && (configFdA!=null)){
-					redNeuronalPM = new RedNeuronal(numNeursCapa,nombre,configTdA,configFdA);
-					redesNeuronalesPMR.add(redNeuronalPM);
-					seccionCrearRed.borrarDatosReiniciarConfiguracion();
-					JOptionPane.showMessageDialog(null, "Red neuronal creada y almacenada correctamente.","Creacion de red correcta", JOptionPane.PLAIN_MESSAGE);
+					if(nombresRedesExistentes != null){
+						for(int i=0; i<nombresRedesExistentes.length; i++){
+							if(nombresRedesExistentes[i].equals(nombre)){
+								bandera = true;
+								break;
+							}
+						}
+					}
+					if(bandera)
+						JOptionPane.showMessageDialog(null, "El nombre de red ingresado ya existe para otra red almacenada.","Dato incorrecto", JOptionPane.PLAIN_MESSAGE);
+					else{
+						//redNeuronalPM = new RedNeuronal(numNeursCapa,nombre,configTdA,configFdA);
+						redesNeuronalesPMR.add(redNeuronalPM);
+						seccionCrearRed.borrarDatosReiniciarConfiguracion();
+						JOptionPane.showMessageDialog(null, "Red neuronal creada y almacenada correctamente.","Creacion de red correcta", JOptionPane.PLAIN_MESSAGE);
+					}
 				}
 				else
 					JOptionPane.showMessageDialog(null, "Debes establecer los datos de configuracion de la red.","Configuracion incorrecta", JOptionPane.ERROR_MESSAGE);

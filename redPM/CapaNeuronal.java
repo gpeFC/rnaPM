@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class CapaNeuronal{
 	private int[] funciones;		// Indicador de funcion de activacion por neurona.
-	private double[] delthas;		// Delthas calculados de cada neurona.
+	private double[] delthas;		// Errores calculados de cada neurona.
 	private double[] salidas;		// Salidas obtenidas de cada neurona.
 	private double[] entradas;		// Entradas para cada neurona.
 	private double[][] antiguos;	// Pesos anteriores de cada neurona.
@@ -48,7 +48,7 @@ public class CapaNeuronal{
 
 	/**
      * Metodo que permite establecer los indices que indican las 
-     * funciones de activacion respecticas de cada neurona de la capa.
+     * funciones de activacion respectivas de cada neurona de la capa.
      * @param funciones 	Indices que indican la funcion de activacion de cada neurona.
      */
 	public void establecerFunciones(int[] funciones){

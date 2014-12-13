@@ -16,7 +16,8 @@ import java.util.Random;
  * una red neuronal en si. 
  */
 public class RedNeuronal{
-	private int[] numNeursCapa;
+	private int[] numeroNeuronasCapa;
+	private int[][] indiceFuncionActivacion;
 	private String nombreRed;
 	private String configuracionAlphas;
 	private String configuracionFunciones;
@@ -29,8 +30,9 @@ public class RedNeuronal{
      * @param configAlphas	    Configuracion del factor de aprendizaje de la red.
      * @param configFunciones	Configuracion de las funciones de activacion de la red.
      */
-	public RedNeuronal(int[] numNeursCapa, String nombreRed, String configAlphas, String configFunciones){
-		this.numNeursCapa = numNeursCapa;
+	public RedNeuronal(int[] numNeursCapa, int[][] indiceFuncActiv, String nombreRed, String configAlphas, String configFunciones){
+		this.numeroNeuronasCapa = numNeursCapa;
+		this.indiceFuncionActivacion = indiceFuncActiv;
 		this.nombreRed = nombreRed;
 		this.configuracionAlphas = configAlphas;
 		this.configuracionFunciones = configFunciones;
@@ -49,6 +51,14 @@ public class RedNeuronal{
      */
 	public ArrayList<CapaNeuronal> obtenerRedNeuronal(){
 		return this.redNeuronal;
+	}
+
+	/**
+     * Metodo que permite establecer los indices que indican la funcion de
+     * activacion asociada a cada neurona de la red.
+     */
+	public void establecerIndiceFuncionActivacion(int[][] indiceFuncActiv){
+		this.indiceFuncionActivacion = indiceFuncActiv;
 	}
 
 	/**
@@ -110,7 +120,8 @@ public class RedNeuronal{
 	/**
      * Metodo que permite establecer la funcion de activacion correspondiente de cada neurona
      * de la red.
-     * @param funciones 	Indices que indican la funcion de activacion de cada neurona.
+     * @param funcion 	Indices que indican la funcion de activacion de cada neurona.
+     * @param numNeurs 	Numero que indica cuantas neuronas hay en la capa.
      */
 	public void establecerConfiguracionFunciones(int funcion, int numNeurs){
 		int[] funciones = new int[numNeurs];
@@ -123,15 +134,15 @@ public class RedNeuronal{
 	/**
      * Metodo que permite establecer una misma funcion de activacion asociada a cada neurona de la red.
      * @param funcion 			Indice que indica la funcion de activacion asociada a las neuronas de la red.
-     * @param numNeursCapa		Vector de indices del numero de neuronas existentes en cada capa neuronal de la red.
+     * @param numeroNeuronasCapa		Vector de indices del numero de neuronas existentes en cada capa neuronal de la red.
      */
-	public void establecerConfiguracionFunciones(int funcion, int[] numNeursCapa){
+	public void establecerConfiguracionFunciones(int funcion, int[] numeroNeuronasCapa){
 		int[] funciones;
 		CapaNeuronal capa;
-		for(int i=0; i<numNeursCapa.length; i++){
+		for(int i=0; i<numeroNeuronasCapa.length; i++){
 			capa = this.redNeuronal.get(i);
-			funciones = new int[numNeursCapa[i]];
-			for(int j=0; j<numNeursCapa[i]; j++)
+			funciones = new int[numeroNeuronasCapa[i]];
+			for(int j=0; j<numeroNeuronasCapa[i]; j++)
 				funciones[j] = funcion;
 			capa.establecerFunciones(funciones);
 		}
@@ -142,21 +153,21 @@ public class RedNeuronal{
      * capa de salida de la red y otra correspondiente a cada neurona de las capas ocultas de la red.
      * @param funcionSalida		 	Funcion de activacion correspondiente a las neuronas de la capa de salida de la red.
      * @param funcionOcultas 		Funcion de activacion correspondiente a las neuronas de las capas ocultas de la red.
-     * @param numNeursCapa			Vector de indices del numero de neuronas existentes en cada capa neuronal de la red.
+     * @param numeroNeuronasCapa			Vector de indices del numero de neuronas existentes en cada capa neuronal de la red.
      */
-	public void establecerConfiguracionFunciones(int funcionSalida, int funcionOcultas, int[] numNeursCapa){
+	public void establecerConfiguracionFunciones(int funcionSalida, int funcionOcultas, int[] numeroNeuronasCapa){
 		int[] funciones;
 		CapaNeuronal capa;
-		for(int i=0; i<numNeursCapa.length; i++){
+		for(int i=0; i<numeroNeuronasCapa.length; i++){
 			capa = this.redNeuronal.get(i);
-			funciones = new int[numNeursCapa[i]];
-			if(i == numNeursCapa.length-1){
-				for(int j=0; j<numNeursCapa[i]; j++)
+			funciones = new int[numeroNeuronasCapa[i]];
+			if(i == numeroNeuronasCapa.length-1){
+				for(int j=0; j<numeroNeuronasCapa[i]; j++)
 					funciones[j] = funcionSalida;
 				capa.establecerFunciones(funciones);
 			}
 			else{
-				for(int j=0; j<numNeursCapa[i]; j++)
+				for(int j=0; j<numeroNeuronasCapa[i]; j++)
 					funciones[j] = funcionOcultas;
 				capa.establecerFunciones(funciones);
 			}
@@ -179,18 +190,18 @@ public class RedNeuronal{
      * Metodo que permite inicializar el vector de capas neuronales de la red.
      * @param numArgs 		Longitud de las entradas sinapticas de la primer capa neuronal de la red.
      * @param numCapas		Numero de capas neuronales de la red.
-     * @param numNeursCapa	Vector que indexa el numero de neuronas que habra en capa neuronal de la red.
+     * @param numeroNeuronasCapa	Vector que indexa el numero de neuronas que habra en capa neuronal de la red.
      */
-	public void establecerRedNeuronal(int numArgs, int numCapas, int[] numNeursCapa){
+	public void establecerRedNeuronal(int numArgs, int numCapas, int[] numeroNeuronasCapa){
 		CapaNeuronal capaNeuronal;
 		this.redNeuronal = new ArrayList<CapaNeuronal>(numCapas);
 		for(int i=0; i<numCapas; i++){
 			if(i == 0){
-				capaNeuronal = new CapaNeuronal(numNeursCapa[i], numArgs);
+				capaNeuronal = new CapaNeuronal(numeroNeuronasCapa[i], numArgs);
 				this.redNeuronal.add(capaNeuronal);
 			}
 			else{
-				capaNeuronal = new CapaNeuronal(numNeursCapa[i], numNeursCapa[i-1]);
+				capaNeuronal = new CapaNeuronal(numeroNeuronasCapa[i], numeroNeuronasCapa[i-1]);
 				this.redNeuronal.add(capaNeuronal);
 			}
 		}

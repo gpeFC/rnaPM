@@ -24,6 +24,7 @@ import java.util.InputMismatchException;
 public class SeccionCrearRed extends JPanel{
 
 	private int[] numeroNeuronasCapa = null;
+	private int [][] indiceFuncionActivacion = null;
 	private String nombreRed = null;
 	private String configuracionTasaAprendizaje = null;
 	private String configuracionFuncionActivacion = null;
@@ -87,6 +88,7 @@ public class SeccionCrearRed extends JPanel{
 
 	public void borrarDatosReiniciarConfiguracion(){
 		this.numeroNeuronasCapa = null;
+		this.indiceFuncionActivacion = null;
 		this.nombreRed = null;
 		this.configuracionTasaAprendizaje = null;
 		this.configuracionFuncionActivacion = null;
@@ -164,8 +166,31 @@ public class SeccionCrearRed extends JPanel{
 				else if(evento.getSource() == funcionActivacionJCB){
 					if(funcionActivacionJCB.getSelectedIndex() == 0)
 						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Configuracion incorrecta(FdA)", JOptionPane.ERROR_MESSAGE);
-					else
+					else{
 						configuracionFuncionActivacion = funcionActivacionAS[funcionActivacionJCB.getSelectedIndex()];
+						if(funcionActivacionJCB.getSelectedIndex() == 1){
+							while(true){
+								String alphaRed = JOptionPane.showInputDialog("Escribe el indice numerico de la funcion elegida:\n1) Identidad Lineal \n2) Sigmoide Logistico \n3) Sigmoide Tangencial \n4) Sigmoide Hiperbolico");
+								try{
+									int funcionRed = Integer.parseInt(alphaRed);
+									if(funcionRed < 1 || funcionRed > 4)
+										JOptionPane.showMessageDialog(null, "El indice numerico debe estar en el rango [1-4].","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+									else{
+										indiceFuncionActivacion = new int[numeroNeuronasCapa.length][];
+										for(int i=0; i<indiceFuncionActivacion.length; i++){
+											indiceFuncionActivacion[i] = new int[numeroNeuronasCapa[i]];
+											for(int j=0; j<numeroNeuronasCapa[i]; j++)
+												indiceFuncionActivacion[i][j] = funcionRed;
+										}
+										break;
+									}
+								}
+								catch(Exception excepcion){
+									JOptionPane.showMessageDialog(null, "El dato ingresado no es correcto.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+								}
+							}
+						}
+					}
 				}
 			}
 		}

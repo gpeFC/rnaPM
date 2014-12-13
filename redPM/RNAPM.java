@@ -7,9 +7,9 @@
 
 // Clase: RNAPM
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
+//import java.util.Scanner;
+//import java.util.ArrayList;
+//import java.util.InputMismatchException;
 import javax.swing.JFrame;
 
 public class RNAPM{
