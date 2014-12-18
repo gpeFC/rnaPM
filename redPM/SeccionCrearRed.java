@@ -24,7 +24,7 @@ import java.util.InputMismatchException;
 public class SeccionCrearRed extends JPanel{
 
 	private int[] numeroNeuronasCapa = null;
-	private int [][] indiceFuncionActivacion = null;
+	private int[] indiceFuncionActivacion = null;
 	private String nombreRed = null;
 	private String configuracionTasaAprendizaje = null;
 	private String configuracionFuncionActivacion = null;
@@ -32,15 +32,17 @@ public class SeccionCrearRed extends JPanel{
 	private final String[] tasaAprendizajeAS = {"","TasaAprendizaje/Red","TasaAprendizaje/Capa",
 												 "TasaAprendizaje/Neurona"};
 	private final String[] funcionActivacionAS = {"","FuncionActivacion/Red","FuncionActivacion/Capa",
-												 "FuncionActivacion/Neurona","FuncionActivacion/SalidaOcultas"};
+												 "FuncionActivacion/SalidaOcultas"};
 	private JLabel crearRedJL;
 	private JLabel nombreRedJL;
 	private JLabel neuronasCapaJL;
+	private JLabel patronEjemploJL;
 	private JLabel tasaAprendizajeJL;
 	private JLabel funcionActivacionJL;
 
 	private JTextField nombreRedJTF;
 	private JTextField neuronasCapaJTF;
+	private JTextField patronEjemploJTF;
 
 	private JComboBox tasaAprendizajeJCB;
 	private JComboBox funcionActivacionJCB;
@@ -55,11 +57,13 @@ public class SeccionCrearRed extends JPanel{
 		crearRedJL = new JLabel("Crear Red", SwingConstants.CENTER);
 		nombreRedJL = new JLabel("Nombre de red:");
 		neuronasCapaJL = new JLabel("Numero de neuronas por capa:");
+		patronEjemploJL = new JLabel("Ejemplo de patron de entrada:");
 		tasaAprendizajeJL = new JLabel("Tasa de Aprendizaje:");
 		funcionActivacionJL = new JLabel("Funcion de Activacion:");
 
 		nombreRedJTF = new JTextField("",15);
 		neuronasCapaJTF = new JTextField("",15);
+		patronEjemploJTF = new JTextField("",15);
 
 		tasaAprendizajeJCB = new JComboBox(tasaAprendizajeAS);
 		tasaAprendizajeJCB.setPreferredSize(new Dimension(320,25));
@@ -80,6 +84,8 @@ public class SeccionCrearRed extends JPanel{
 		add(nombreRedJTF);
 		add(neuronasCapaJL);
 		add(neuronasCapaJTF);
+		add(patronEjemploJL);
+		add(patronEjemploJTF);
 		add(tasaAprendizajeJL);
 		add(tasaAprendizajeJCB);
 		add(funcionActivacionJL);
@@ -94,8 +100,9 @@ public class SeccionCrearRed extends JPanel{
 		this.configuracionFuncionActivacion = null;
 		nombreRedJTF.setText("");
 		neuronasCapaJTF.setText("");
-		//tasaAprendizajeJCB.setSelectedIndex(0);
-		//funcionActivacionJCB.setSelectedIndex(0);
+		patronEjemploJTF.setText("");
+		tasaAprendizajeJCB.setSelectedIndex(0);
+		funcionActivacionJCB.setSelectedIndex(0);
 	}
 
 	public int[] obtenerNumeroNeuronasCapa(){
@@ -155,32 +162,29 @@ public class SeccionCrearRed extends JPanel{
 	}
 
 	private class ManejadorEventosItemListener implements ItemListener{
+
 		public void itemStateChanged(ItemEvent evento){
+
 			if (evento.getStateChange() == ItemEvent.SELECTED){
+
 				if(evento.getSource() == tasaAprendizajeJCB){
-					if(tasaAprendizajeJCB.getSelectedIndex() == 0)
-						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Configuracion incorrecta(TdA)", JOptionPane.ERROR_MESSAGE);
-					else
+					if(tasaAprendizajeJCB.getSelectedIndex() != 0)
 						configuracionTasaAprendizaje = tasaAprendizajeAS[tasaAprendizajeJCB.getSelectedIndex()];
 				}
 				else if(evento.getSource() == funcionActivacionJCB){
-					if(funcionActivacionJCB.getSelectedIndex() == 0)
-						JOptionPane.showMessageDialog(null, "Debes elegir una configuracion.","Configuracion incorrecta(FdA)", JOptionPane.ERROR_MESSAGE);
-					else{
+					if(funcionActivacionJCB.getSelectedIndex() != 0){
 						configuracionFuncionActivacion = funcionActivacionAS[funcionActivacionJCB.getSelectedIndex()];
 						if(funcionActivacionJCB.getSelectedIndex() == 1){
 							while(true){
-								String alphaRed = JOptionPane.showInputDialog("Escribe el indice numerico de la funcion elegida:\n1) Identidad Lineal \n2) Sigmoide Logistico \n3) Sigmoide Tangencial \n4) Sigmoide Hiperbolico");
+								String funcionRedS = JOptionPane.showInputDialog("Escribe el indice numerico de la funcion elegida:\n1) Identidad Lineal \n2) Sigmoide Logistico \n3) Sigmoide Tangencial \n4) Sigmoide Hiperbolico");
 								try{
-									int funcionRed = Integer.parseInt(alphaRed);
-									if(funcionRed < 1 || funcionRed > 4)
+									int funcionRedI = Integer.parseInt(funcionRedS);
+									if(funcionRedI < 1 || funcionRedI > 4)
 										JOptionPane.showMessageDialog(null, "El indice numerico debe estar en el rango [1-4].","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
 									else{
-										indiceFuncionActivacion = new int[numeroNeuronasCapa.length][];
+										indiceFuncionActivacion = new int[numeroNeuronasCapa.length];
 										for(int i=0; i<indiceFuncionActivacion.length; i++){
-											indiceFuncionActivacion[i] = new int[numeroNeuronasCapa[i]];
-											for(int j=0; j<numeroNeuronasCapa[i]; j++)
-												indiceFuncionActivacion[i][j] = funcionRed;
+											indiceFuncionActivacion[i] = funcionRedI;
 										}
 										break;
 									}
@@ -190,6 +194,31 @@ public class SeccionCrearRed extends JPanel{
 								}
 							}
 						}
+						else if(funcionActivacionJCB.getSelectedIndex() == 2){
+							while(true){
+								boolean bandera = true;
+								String funcionCapaS = JOptionPane.showInputDialog("Escribe los indices numericos de las funciones elegidas\n separados por comas:\n1) Identidad Lineal \n2) Sigmoide Logistico \n3) Sigmoide Tangencial \n4) Sigmoide Hiperbolico");
+								try{
+									String[] funcionesCapaS = funcionCapaS.split(",");
+									int[] funcionesCapaI = new int[funcionesCapaS.length];
+									for(int i=0; i<funcionesCapaI.length; i++){
+										int funcionCapa = Integer.parseInt(funcionesCapaS[i]);
+										if(funcionCapa < 1 || funcionCapa > 4){
+											bandera = false;
+											JOptionPane.showMessageDialog(null, "El indice numerico debe estar en el rango [1-4].","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+										}
+										else
+											funcionesCapaI[i] = funcionCapa;
+									}
+									if(bandera)
+										break;
+								}
+								catch(Exception excepcion){
+									JOptionPane.showMessageDialog(null, "El dato ingresado no es correcto.","Dato incorrecto", JOptionPane.ERROR_MESSAGE);
+								}
+							}
+						}
+						else if(funcionActivacionJCB.getSelectedIndex() == 3){}
 					}
 				}
 			}
